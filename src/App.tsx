@@ -5,6 +5,7 @@ import img9 from './assets/Studentimages/9.png';
 import img25 from './assets/Studentimages/25.png';
 import img34 from './assets/Studentimages/34.png';
 import img40 from './assets/Studentimages/40.png';
+import img52 from './assets/Studentimages/52.png';
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -50,7 +51,13 @@ const App = () => {
         image: img40,
         portfolioLink: 'https://harshdev4.github.io/harsh/'
       },
-     
+      { 
+        id: 52, 
+        name: 'kali bakshi', 
+        rollNo: '052', 
+        image: img52,
+        portfolioLink: 'https://v0-edgy-portfolio-website.vercel.app/'
+      },
       
     ]
   };
