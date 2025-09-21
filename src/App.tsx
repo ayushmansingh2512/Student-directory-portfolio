@@ -30,7 +30,7 @@ const App = () => {
         portfolioLink: 'https://portfolio-main-sooty-pi.vercel.app/'
       },
       { 
-        id: 9, 
+        id: 25, 
         name: 'Dhruv Goel', 
         rollNo: '025', 
         image: img25,
