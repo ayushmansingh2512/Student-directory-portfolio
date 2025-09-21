@@ -3,6 +3,7 @@ import './App.css';
 import img1 from './assets/Studentimages/1.png';
 import img9 from './assets/Studentimages/9.png';
 import img25 from './assets/Studentimages/25.png';
+import img34 from './assets/Studentimages/34.png';
 import img40 from './assets/Studentimages/40.png';
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -28,12 +29,19 @@ const App = () => {
         image: img9,
         portfolioLink: 'https://portfolio-main-sooty-pi.vercel.app/'
       },
-            { 
+      { 
         id: 9, 
         name: 'Dhruv Goel', 
         rollNo: '025', 
         image: img25,
         portfolioLink: 'https://dhruvgoel23.github.io/First_portfolio/'
+      },
+        { 
+        id: 34, 
+        name: 'Gaurav Gupta', 
+        rollNo: '034', 
+        image: img34,
+        portfolioLink: 'https://04-gaurav.github.io/My_Portfolio/'
       },
       { 
         id: 40, 
