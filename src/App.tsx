@@ -2,10 +2,12 @@ import { useState } from 'react';
 import './App.css';  
 import img1 from './assets/Studentimages/1.png';
 import img9 from './assets/Studentimages/9.png';
+import img24 from './assets/Studentimages/24.png';
 import img25 from './assets/Studentimages/25.png';
 import img34 from './assets/Studentimages/34.png';
 import img40 from './assets/Studentimages/40.png';
-import img52 from './assets/Studentimages/52.png';
+import img55 from './assets/Studentimages/55.png';
+
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -31,6 +33,13 @@ const App = () => {
         portfolioLink: 'https://portfolio-main-sooty-pi.vercel.app/'
       },
       { 
+        id: 24, 
+        name: 'Devvansh gupta', 
+        rollNo: '024', 
+        image: img24,
+        portfolioLink: 'https://dhruvgoel23.github.io/First_portfolio/'
+      },      
+      { 
         id: 25, 
         name: 'Dhruv Goel', 
         rollNo: '025', 
@@ -54,8 +63,8 @@ const App = () => {
       { 
         id: 52, 
         name: 'kali bakshi', 
-        rollNo: '052', 
-        image: img52,
+        rollNo: '055', 
+        image: img55,
         portfolioLink: 'https://v0-edgy-portfolio-website.vercel.app/'
       },
       
