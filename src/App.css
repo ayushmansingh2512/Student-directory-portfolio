@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  background-color: #F0EEE6;
+}
 
  
 
@@ -12,7 +15,7 @@
 
 /* Header Styles */
 .header {
-background: #fff;
+background:#E3DACC;
 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
  display: flex;
  gap: 100px;
@@ -21,7 +24,7 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 } 
  /* When card is hovered, change card name color */
 .card:hover .card-name {
-  color: #FF5A5F; /* Airbnb red-pink */
+  color: #D97757; /* Airbnb red-pink */
   cursor: pointer;
   transition: color 0.3s ease; /* smooth effect */
 }
@@ -35,7 +38,7 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 .logo {
   font-size: 2rem;
   font-weight: bold;
-  color: #ff5a5f;
+  color: #D97757;
  
   text-align: center;
 }
@@ -58,7 +61,7 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .search-input:focus {
-  border-color: #ff5a5f;
+  border-color: #D97757;
   box-shadow: 0 0 0 3px rgba(255, 90, 95, 0.1);
 }
 
@@ -77,7 +80,7 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 
 /* Card Styles */
 .card {
-  background-color: #f8f9fa;
+ 
  
   overflow: hidden;
  
@@ -93,7 +96,7 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   height: 400px;
   overflow: hidden;
   position: relative;
-  border-radius: 12px;
+  border-radius: 24px;
 }
 
 .card-image img {
@@ -122,6 +125,7 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   color: #717171;
   font-size: 0.9rem;
   font-weight: 400;
+
 }
 
 /* No Results */
@@ -139,11 +143,13 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
+    background-color: transparent;
   }
   
   .cards-grid {
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 20px;
+    background-color:  ;
   }
   
   .logo {

@@ -6,7 +6,9 @@ import img24 from './assets/Studentimages/24.png';
 import img25 from './assets/Studentimages/25.png';
 import img34 from './assets/Studentimages/34.png';
 import img40 from './assets/Studentimages/40.png';
+import img46 from './assets/Studentimages/46.png';
 import img55 from './assets/Studentimages/55.png';
+
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -60,6 +62,13 @@ const App = () => {
         image: img40,
         portfolioLink: 'https://harshdev4.github.io/harsh/'
       },
+            { 
+        id: 46, 
+        name: 'Himanshu Srivastav', 
+        rollNo: '046', 
+        image: img46,
+        portfolioLink: 'https://himanshu-770.github.io/portfolio/'
+      },
       { 
         id: 52, 
         name: 'kali bakshi', 
@@ -96,7 +105,7 @@ const App = () => {
 
       <main className="main">
         <div className="container">
-          <div className="cards-grid">
+        <div className="cards-grid">
             {filteredStudents.map(student => (
               <a
                 key={student.id}
