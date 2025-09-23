@@ -39,7 +39,7 @@ const App = () => {
         name: 'Devvansh gupta', 
         rollNo: '024', 
         image: img24,
-        portfolioLink: 'https://dhruvgoel23.github.io/First_portfolio/'
+        portfolioLink: 'https://deva8126.github.io/p2/'
       },      
       { 
         id: 25, 
