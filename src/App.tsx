@@ -9,7 +9,7 @@ import img34 from './assets/Studentimages/34.png';
 import img40 from './assets/Studentimages/40.png';
 import img46 from './assets/Studentimages/46.png';
 import img55 from './assets/Studentimages/55.png';
-
+import img56 from './assets/Studentimages/56.png';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -84,6 +84,14 @@ const App = () => {
         image: img55,
         portfolioLink: 'https://v0-edgy-portfolio-website.vercel.app/'
       },
+       { 
+        id: 56, 
+        name: 'Kamlakar Tiwari', 
+        rollNo: '056', 
+        image: img56,
+        portfolioLink: 'https://kt-personal-portfolio.netlify.app/ '
+      },
+      
       
     ]
   };
