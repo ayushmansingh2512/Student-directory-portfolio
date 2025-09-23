@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';  
 import img1 from './assets/Studentimages/1.png';
 import img9 from './assets/Studentimages/9.png';
+import img10 from './assets/Studentimages/10.png';
 import img24 from './assets/Studentimages/24.png';
 import img25 from './assets/Studentimages/25.png';
 import img34 from './assets/Studentimages/34.png';
@@ -33,6 +34,13 @@ const App = () => {
         rollNo: '009', 
         image: img9,
         portfolioLink: 'https://portfolio-main-sooty-pi.vercel.app/'
+      },
+             { 
+        id: 10, 
+        name: 'Chandra Vijay Singh', 
+        rollNo: '010', 
+        image: img10,
+        portfolioLink: 'https://chandravijaysinghportfolio.netlify.app/'
       },
       { 
         id: 24, 

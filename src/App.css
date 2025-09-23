@@ -33,6 +33,7 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  font-family: Satoshi;
 }
 
 .logo {
@@ -170,6 +171,7 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   font-size: 1rem;
   color: #555;
   margin-bottom: 1rem;
+  font-weight: 800;
 }
  
 @media (max-width: 768px) {
