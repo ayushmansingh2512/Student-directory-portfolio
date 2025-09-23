@@ -5,6 +5,7 @@ import img9 from './assets/Studentimages/9.png';
 import img10 from './assets/Studentimages/10.png';
 import img24 from './assets/Studentimages/24.png';
 import img25 from './assets/Studentimages/25.png';
+import img32 from './assets/Studentimages/32.png';
 import img34 from './assets/Studentimages/34.png';
 import img40 from './assets/Studentimages/40.png';
 import img46 from './assets/Studentimages/46.png';
@@ -55,6 +56,13 @@ const App = () => {
         rollNo: '025', 
         image: img25,
         portfolioLink: 'https://dhruvgoel23.github.io/First_portfolio/'
+      },
+              { 
+        id: 32, 
+        name: 'Faisal Khan', 
+        rollNo: '032', 
+        image: img32,
+        portfolioLink: 'https://faisalkhan-fk.github.io/portfolio/'
       },
         { 
         id: 34, 
