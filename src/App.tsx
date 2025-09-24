@@ -103,7 +103,7 @@ const App = () => {
       },
        { 
         id: 28, 
-        name: 'Divya Jha', 
+        name: 'Divyansh Singhal', 
         rollNo: '028', 
         image: img28,
         portfolioLink: 'https://divyanshsinghal1743.github.io/portfolio/'
