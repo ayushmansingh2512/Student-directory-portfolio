@@ -1,10 +1,14 @@
+
 import { useState } from 'react';
 import './App.css';  
 import img1 from './assets/Studentimages/1.png';
+import img6 from './assets/Studentimages/6.png';
 import img9 from './assets/Studentimages/9.png';
 import img10 from './assets/Studentimages/10.png';
+import img14 from './assets/Studentimages/14.png';
 import img24 from './assets/Studentimages/24.png';
 import img25 from './assets/Studentimages/25.png';
+import img27 from './assets/Studentimages/27.png';
 import img32 from './assets/Studentimages/32.png';
 import img34 from './assets/Studentimages/34.png';
 import img40 from './assets/Studentimages/40.png';
@@ -29,6 +33,13 @@ const App = () => {
         image: img1,
         portfolioLink: 'https://ayushman-singh-portfolio.vercel.app'
       },
+            { 
+        id: 6, 
+        name: 'bhavya tyagi', 
+        rollNo: '006', 
+        image: img6,
+        portfolioLink: 'https://bhavyatyagi013-bit.github.io/portfolio/'
+      },
        { 
         id: 9, 
         name: 'Bhumi Bhardwaj', 
@@ -43,6 +54,14 @@ const App = () => {
         image: img10,
         portfolioLink: 'https://chandravijaysinghportfolio.netlify.app/'
       },
+         { 
+        id: 14, 
+        name: 'Deepak Sharma', 
+        rollNo: '014', 
+        image: img14,
+        portfolioLink: 'https://deepaksharma-dadhich.github.io/portfolio/ '
+      },
+      
       { 
         id: 24, 
         name: 'Devvansh gupta', 
@@ -56,6 +75,13 @@ const App = () => {
         rollNo: '025', 
         image: img25,
         portfolioLink: 'https://dhruvgoel23.github.io/First_portfolio/'
+      },
+            { 
+        id: 27, 
+        name: 'Divya Jha', 
+        rollNo: '027', 
+        image: img27,
+        portfolioLink: 'https://divya2027.github.io/portfolio/'
       },
               { 
         id: 32, 
