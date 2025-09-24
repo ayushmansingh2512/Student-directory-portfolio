@@ -7,6 +7,7 @@ import img6 from './assets/Studentimages/6.png';
 import img9 from './assets/Studentimages/9.png';
 import img10 from './assets/Studentimages/10.png';
 import img14 from './assets/Studentimages/14.png';
+import img18 from './assets/Studentimages/18.png';
 import img22 from './assets/Studentimages/22.png';
 import img24 from './assets/Studentimages/24.png';
 import img25 from './assets/Studentimages/25.png';
@@ -72,6 +73,13 @@ const App = () => {
         rollNo: '014', 
         image: img14,
         portfolioLink: 'https://deepaksharma-dadhich.github.io/portfolio/ '
+      },
+      { 
+        id: 18, 
+        name: 'DEEPANSHU', 
+        rollNo: '018', 
+        image: img18,
+        portfolioLink: 'https://deepanshu9898.github.io/deepanshu/'
       },
              { 
         id: 22, 
