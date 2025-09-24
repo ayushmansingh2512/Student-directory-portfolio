@@ -2,14 +2,18 @@
 import { useState } from 'react';
 import './App.css';  
 import img1 from './assets/Studentimages/1.png';
+import img5 from './assets/Studentimages/5.png';
 import img6 from './assets/Studentimages/6.png';
 import img9 from './assets/Studentimages/9.png';
 import img10 from './assets/Studentimages/10.png';
 import img14 from './assets/Studentimages/14.png';
+import img22 from './assets/Studentimages/22.png';
 import img24 from './assets/Studentimages/24.png';
 import img25 from './assets/Studentimages/25.png';
 import img27 from './assets/Studentimages/27.png';
+import img28 from './assets/Studentimages/28.png';
 import img32 from './assets/Studentimages/32.png';
+import img33 from './assets/Studentimages/33.png';
 import img34 from './assets/Studentimages/34.png';
 import img40 from './assets/Studentimages/40.png';
 import img46 from './assets/Studentimages/46.png';
@@ -33,6 +37,14 @@ const App = () => {
         image: img1,
         portfolioLink: 'https://ayushman-singh-portfolio.vercel.app'
       },
+  { 
+        id: 5, 
+        name: 'bhavya', 
+        rollNo: '005', 
+        image: img5,
+        portfolioLink: 'https://bhavya171104.github.io/portfolio/'
+      },
+
             { 
         id: 6, 
         name: 'bhavya tyagi', 
@@ -61,7 +73,13 @@ const App = () => {
         image: img14,
         portfolioLink: 'https://deepaksharma-dadhich.github.io/portfolio/ '
       },
-      
+             { 
+        id: 22, 
+        name: 'Devansh Garg', 
+        rollNo: '022', 
+        image: img22,
+        portfolioLink: 'https://dev981175.github.io/P2/'
+      },
       { 
         id: 24, 
         name: 'Devvansh gupta', 
@@ -83,12 +101,26 @@ const App = () => {
         image: img27,
         portfolioLink: 'https://divya2027.github.io/portfolio/'
       },
+       { 
+        id: 28, 
+        name: 'Divya Jha', 
+        rollNo: '028', 
+        image: img28,
+        portfolioLink: 'https://divyanshsinghal1743.github.io/portfolio/'
+      },
               { 
         id: 32, 
         name: 'Faisal Khan', 
         rollNo: '032', 
         image: img32,
         portfolioLink: 'https://faisalkhan-fk.github.io/portfolio/'
+      },
+         { 
+        id: 33, 
+        name: 'Gagan Bana', 
+        rollNo: '033', 
+        image: img33,
+        portfolioLink: 'https://gaganbana23-dev.github.io/portfolio-/'
       },
         { 
         id: 34, 
@@ -112,7 +144,7 @@ const App = () => {
         portfolioLink: 'https://himanshu-770.github.io/portfolio/'
       },
       { 
-        id: 52, 
+        id: 55, 
         name: 'kali bakshi', 
         rollNo: '055', 
         image: img55,
