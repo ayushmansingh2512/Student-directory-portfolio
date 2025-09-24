@@ -76,7 +76,7 @@ const App = () => {
       },
       { 
         id: 18, 
-        name: 'DEEPANSHU', 
+        name: 'Deepanshu', 
         rollNo: '018', 
         image: img18,
         portfolioLink: 'https://deepanshu9898.github.io/deepanshu/'
