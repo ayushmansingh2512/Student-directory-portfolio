@@ -17,6 +17,7 @@ import img32 from './assets/Studentimages/32.png';
 import img33 from './assets/Studentimages/33.png';
 import img34 from './assets/Studentimages/34.png';
 import img40 from './assets/Studentimages/40.png';
+import img43 from './assets/Studentimages/43.png';
 import img46 from './assets/Studentimages/46.png';
 import img55 from './assets/Studentimages/55.png';
 import img56 from './assets/Studentimages/56.png';
@@ -144,7 +145,15 @@ const App = () => {
         image: img40,
         portfolioLink: 'https://harshdev4.github.io/harsh/'
       },
-            { 
+
+      { 
+        id: 43, 
+        name: 'Hemank Kumar', 
+        rollNo: '043', 
+        image: img43,
+        portfolioLink: 'https://hemank-kumar.netlify.app/'
+      },
+      { 
         id: 46, 
         name: 'Himanshu Srivastav', 
         rollNo: '046', 
