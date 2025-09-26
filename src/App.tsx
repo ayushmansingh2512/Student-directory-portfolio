@@ -1,5 +1,7 @@
 
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Mail, ExternalLink, Github, Linkedin, Instagram, Code } from 'lucide-react';
 import './App.css';  
 import img1 from './assets/Studentimages/1.png';
 import img3 from './assets/Studentimages/3.png';
@@ -40,10 +42,11 @@ import img59 from './assets/Studentimages/59.png';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
 
 
 
-  // Site data array - easily configurable
   const siteData = {
     title: 'Student Portfolio Directory',
     para: 'Kiet MCA Section-B',
@@ -53,28 +56,48 @@ const App = () => {
         name: 'Ayushman Singh', 
         rollNo: '001', 
         image: img1,
-        portfolioLink: 'https://ayushman-singh-portfolio.vercel.app'
+        portfolioLink: 'https://ayushman-singh-portfolio.vercel.app',
+        email: 'ayushmansingh2512@gmail.com',
+        github: 'https://github.com/ayushmansingh2512',
+        linkedin: 'https://www.linkedin.com/in/ayushman-singh-9a6244265',
+        instagram: 'https://www.instagram.com/ayushman_singh_red/?hl=en',
+        leetcode: 'https://leetcode.com/u/ayushmansingh2512/'
       },
             { 
         id: 3, 
         name: 'Bhargwi raj', 
         rollNo: '003', 
         image: img3,
-        portfolioLink: 'https://bhargwiraj.github.io/myresume/'
+        portfolioLink: 'https://bhargwiraj.github.io/myresume/',
+        email: 'bhargwi@example.com',
+        github: 'https://github.com/bhargwiraj',
+        linkedin: 'https://linkedin.com/in/bhargwi',
+        instagram: 'https://instagram.com/bhargwi',
+        leetcode: 'https://leetcode.com/bhargwi'
       },
         { 
         id: 4, 
         name: 'Bhavishya Raj Mishra ', 
         rollNo: '004', 
         image: img4,
-        portfolioLink: 'https://bhavishyamishra1210-a11y.github.io/bhavishyamishra.github.io/'
+        portfolioLink: 'https://bhavishyamishra1210-a11y.github.io/bhavishyamishra.github.io/',
+        email: 'bhavishya@example.com',
+        github: 'https://github.com/bhavishya',
+        linkedin: 'https://linkedin.com/in/bhavishya',
+        instagram: 'https://instagram.com/bhavishya',
+        leetcode: 'https://leetcode.com/bhavishya'
       },
   { 
         id: 5, 
         name: 'bhavya', 
         rollNo: '005', 
         image: img5,
-        portfolioLink: 'https://bhavya171104.github.io/portfolio/'
+        portfolioLink: 'https://bhavya171104.github.io/portfolio/',
+        email: 'bhavya@example.com',
+        github: 'https://github.com/bhavya',
+        linkedin: 'https://linkedin.com/in/bhavya',
+        instagram: 'https://instagram.com/bhavya',
+        leetcode: 'https://leetcode.com/bhavya'
       },
 
             { 
@@ -82,97 +105,167 @@ const App = () => {
         name: 'bhavya tyagi', 
         rollNo: '006', 
         image: img6,
-        portfolioLink: 'https://bhavyatyagi013-bit.github.io/portfolio/'
+        portfolioLink: 'https://bhavyatyagi013-bit.github.io/portfolio/',
+        email: 'bhavyatyagi@example.com',
+        github: 'https://github.com/bhavyatyagi',
+        linkedin: 'https://linkedin.com/in/bhavyatyagi',
+        instagram: 'https://instagram.com/bhavyatyagi',
+        leetcode: 'https://leetcode.com/bhavyatyagi'
       },
            { 
         id: 7, 
         name: 'Bhawana Pathak', 
         rollNo: '007', 
         image: img7,
-        portfolioLink: 'https://pathakbhawna32.github.io/BHAWANA-PORTFOLIO/'
+        portfolioLink: 'https://pathakbhawna32.github.io/BHAWANA-PORTFOLIO/',
+        email: 'bhawana@example.com',
+        github: 'https://github.com/bhawana',
+        linkedin: 'https://linkedin.com/in/bhawana',
+        instagram: 'https://instagram.com/bhawana',
+        leetcode: 'https://leetcode.com/bhawana'
       },
        { 
         id: 9, 
         name: 'Bhumi Bhardwaj', 
         rollNo: '009', 
         image: img9,
-        portfolioLink: 'https://portfolio-main-sooty-pi.vercel.app/'
+        portfolioLink: 'https://portfolio-main-sooty-pi.vercel.app/',
+        email: 'bhumi@example.com',
+        github: 'https://github.com/bhumi',
+        linkedin: 'https://linkedin.com/in/bhumi',
+        instagram: 'https://instagram.com/bhumi',
+        leetcode: 'https://leetcode.com/bhumi'
       },
              { 
         id: 10, 
         name: 'Chandra Vijay Singh', 
         rollNo: '010', 
         image: img10,
-        portfolioLink: 'https://chandravijayportfolio.netlify.app/'
+        portfolioLink: 'https://chandravijayportfolio.netlify.app/',
+        email: 'chandra@example.com',
+        github: 'https://github.com/chandra',
+        linkedin: 'https://linkedin.com/in/chandra',
+        instagram: 'https://instagram.com/chandra',
+        leetcode: 'https://leetcode.com/chandra'
       },
          { 
         id: 14, 
         name: 'Deepak Sharma', 
         rollNo: '014', 
         image: img14,
-        portfolioLink: 'https://deepaksharma-dadhich.github.io/portfolio/ '
+        portfolioLink: 'https://deepaksharma-dadhich.github.io/portfolio/ ',
+        email: 'deepak@example.com',
+        github: 'https://github.com/deepak',
+        linkedin: 'https://linkedin.com/in/deepak',
+        instagram: 'https://instagram.com/deepak',
+        leetcode: 'https://leetcode.com/deepak'
       },
              { 
         id: 15, 
         name: 'Deepak Tyagi', 
         rollNo: '015', 
         image: img15,
-        portfolioLink: 'https://deepaktyagi2002.github.io/p1/'
+        portfolioLink: 'https://deepaktyagi2002.github.io/p1/',
+        email: 'deepaktyagi@example.com',
+        github: 'https://github.com/deepaktyagi',
+        linkedin: 'https://linkedin.com/in/deepaktyagi',
+        instagram: 'https://instagram.com/deepaktyagi',
+        leetcode: 'https://leetcode.com/deepaktyagi'
       },
            { 
         id: 17, 
         name: 'Deepanshi Mishra', 
         rollNo: '017', 
         image: img17,
-        portfolioLink: 'https://portfolio-i5xq-pkxk701et-deepanshi8006s-projects.vercel.app/'
+        portfolioLink: 'https://portfolio-i5xq-pkxk701et-deepanshi8006s-projects.vercel.app/',
+        email: 'deepanshi@example.com',
+        github: 'https://github.com/deepanshi',
+        linkedin: 'https://linkedin.com/in/deepanshi',
+        instagram: 'https://instagram.com/deepanshi',
+        leetcode: 'https://leetcode.com/deepanshi'
       },
       { 
         id: 18, 
         name: 'Deepanshu', 
         rollNo: '018', 
         image: img18,
-        portfolioLink: 'https://deepanshu9898.github.io/deepanshu/'
+        portfolioLink: 'https://deepanshu9898.github.io/deepanshu/',
+        email: 'deepanshu@example.com',
+        github: 'https://github.com/deepanshu',
+        linkedin: 'https://linkedin.com/in/deepanshu',
+        instagram: 'https://instagram.com/deepanshu',
+        leetcode: 'https://leetcode.com/deepanshu'
       },  { 
         id: 19, 
         name: 'Deepika Sharma ', 
         rollNo: '019', 
         image: img19,
-        portfolioLink: 'https://deepikasharma-04.github.io/Project/'
+        portfolioLink: 'https://deepikasharma-04.github.io/Project/',
+        email: 'deepika@example.com',
+        github: 'https://github.com/deepika',
+        linkedin: 'https://linkedin.com/in/deepika',
+        instagram: 'https://instagram.com/deepika',
+        leetcode: 'https://leetcode.com/deepika'
       },
              { 
         id: 22, 
         name: 'Devansh Garg', 
         rollNo: '022', 
         image: img22,
-        portfolioLink: 'https://dev981175.github.io/P2/'
+        portfolioLink: 'https://dev981175.github.io/P2/',
+        email: 'devansh@example.com',
+        github: 'https://github.com/devansh',
+        linkedin: 'https://linkedin.com/in/devansh',
+        instagram: 'https://instagram.com/devansh',
+        leetcode: 'https://leetcode.com/devansh'
       },
           { 
         id: 23, 
         name: 'Devansh Narvariya', 
         rollNo: '023', 
         image: img23,
-        portfolioLink: 'https://devanshnarvariya.github.io/devanshportfolio/'
+        portfolioLink: 'https://devanshnarvariya.github.io/devanshportfolio/',
+        email: 'devanshn@example.com',
+        github: 'https://github.com/devanshn',
+        linkedin: 'https://linkedin.com/in/devanshn',
+        instagram: 'https://instagram.com/devanshn',
+        leetcode: 'https://leetcode.com/devanshn'
       },
       { 
         id: 24, 
         name: 'Devvansh gupta', 
         rollNo: '024', 
         image: img24,
-        portfolioLink: 'https://deva8126.github.io/p2/'
+        portfolioLink: 'https://deva8126.github.io/p2/',
+        email: 'devvansh@example.com',
+        github: 'https://github.com/devvansh',
+        linkedin: 'https://linkedin.com/in/devvansh',
+        instagram: 'https://instagram.com/devvansh',
+        leetcode: 'https://leetcode.com/devvansh'
       },      
       { 
         id: 25, 
         name: 'Dhruv Goel', 
         rollNo: '025', 
         image: img25,
-        portfolioLink: 'https://dhruvgoel23.github.io/First_portfolio/'
+        portfolioLink: 'https://dhruvgoel23.github.io/First_portfolio/',
+        email: 'dhruv@example.com',
+        github: 'https://github.com/dhruv',
+        linkedin: 'https://linkedin.com/in/dhruv',
+        instagram: 'https://instagram.com/dhruv',
+        leetcode: 'https://leetcode.com/dhruv'
       },
       { 
         id: 26, 
         name: 'Dhruv mittal', 
         rollNo: '026', 
         image: img26,
-        portfolioLink: 'https://dhruvmittal7652-star.github.io/dhruvmittal.github.io/'
+        portfolioLink: 'https://dhruvmittal7652-star.github.io/dhruvmittal.github.io/',
+        email: 'dhruvm@example.com',
+        github: 'https://github.com/dhruvm',
+        linkedin: 'https://linkedin.com/in/dhruvm',
+        instagram: 'https://instagram.com/dhruvm',
+        leetcode: 'https://leetcode.com/dhruvm'
       },
 
             { 
@@ -180,63 +273,108 @@ const App = () => {
         name: 'Divya Jha', 
         rollNo: '027', 
         image: img27,
-        portfolioLink: 'https://divya2027.github.io/portfolio/'
+        portfolioLink: 'https://divya2027.github.io/portfolio/',
+        email: 'divya@example.com',
+        github: 'https://github.com/divya',
+        linkedin: 'https://linkedin.com/in/divya',
+        instagram: 'https://instagram.com/divya',
+        leetcode: 'https://leetcode.com/divya'
       },
        { 
         id: 28, 
         name: 'Divyansh Singhal', 
         rollNo: '028', 
         image: img28,
-        portfolioLink: 'https://divyanshsinghal1743.github.io/portfolio/'
+        portfolioLink: 'https://divyanshsinghal1743.github.io/portfolio/',
+        email: 'divyansh@example.com',
+        github: 'https://github.com/divyansh',
+        linkedin: 'https://linkedin.com/in/divyansh',
+        instagram: 'https://instagram.com/divyansh',
+        leetcode: 'https://leetcode.com/divyansh'
       },
               { 
         id: 32, 
         name: 'Faisal Khan', 
         rollNo: '032', 
         image: img32,
-        portfolioLink: 'https://faisalkhan-fk.github.io/portfolio/'
+        portfolioLink: 'https://faisalkhan-fk.github.io/portfolio/',
+        email: 'faisal@example.com',
+        github: 'https://github.com/faisal',
+        linkedin: 'https://linkedin.com/in/faisal',
+        instagram: 'https://instagram.com/faisal',
+        leetcode: 'https://leetcode.com/faisal'
       },
          { 
         id: 33, 
         name: 'Gagan Bana', 
         rollNo: '033', 
         image: img33,
-        portfolioLink: 'https://gaganbana23-dev.github.io/portfolio-/'
+        portfolioLink: 'https://gaganbana23-dev.github.io/portfolio-/',
+        email: 'gagan@example.com',
+        github: 'https://github.com/gagan',
+        linkedin: 'https://linkedin.com/in/gagan',
+        instagram: 'https://instagram.com/gagan',
+        leetcode: 'https://leetcode.com/gagan'
       },
         { 
         id: 34, 
         name: 'Gaurav Gupta', 
         rollNo: '034', 
         image: img34,
-        portfolioLink: 'https://04-gaurav.github.io/My_Portfolio/'
+        portfolioLink: 'https://04-gaurav.github.io/My_Portfolio/',
+        email: 'gaurav@example.com',
+        github: 'https://github.com/gaurav',
+        linkedin: 'https://linkedin.com/in/gaurav',
+        instagram: 'https://instagram.com/gaurav',
+        leetcode: 'https://leetcode.com/gaurav'
       },
          { 
         id: 35, 
         name: 'Gaurav Gupta', 
         rollNo: '035', 
         image: img35,
-        portfolioLink: 'https://gauravgupta2005.github.io/portfolio/'
+        portfolioLink: 'https://gauravgupta2005.github.io/portfolio/',
+        email: 'gauravg@example.com',
+        github: 'https://github.com/gauravg',
+        linkedin: 'https://linkedin.com/in/gauravg',
+        instagram: 'https://instagram.com/gauravg',
+        leetcode: 'https://leetcode.com/gauravg'
       },
       { 
         id: 40, 
         name: 'Harsh Tiwari', 
         rollNo: '040', 
         image: img40,
-        portfolioLink: 'https://harshdev4.github.io/harsh/'
+        portfolioLink: 'https://harshdev4.github.io/harsh/',
+        email: 'harsh@example.com',
+        github: 'https://github.com/harsh',
+        linkedin: 'https://linkedin.com/in/harsh',
+        instagram: 'https://instagram.com/harsh',
+        leetcode: 'https://leetcode.com/harsh'
       },
   { 
         id: 41, 
         name: 'Harsh Verma', 
         rollNo: '041', 
         image: img41,
-        portfolioLink: 'https://verma0104.github.io/P01/'
+        portfolioLink: 'https://verma0104.github.io/P01/',
+        email: 'harshv@example.com',
+        github: 'https://github.com/harshv',
+        linkedin: 'https://linkedin.com/in/harshv',
+        instagram: 'https://instagram.com/harshv',
+        leetcode: 'https://leetcode.com/harshv'
       },
         { 
         id: 42, 
         name: 'Harshit saini', 
         rollNo: '042', 
         image: img42,
-        portfolioLink: 'https://harshitsaini-2004.github.io/'
+        portfolioLink: 'https://harshitsaini-2004.github.io/',
+        email: 'harshit@example.com',
+        github: 'https://github.com/harshit',
+        linkedin: 'https://linkedin.com/in/harshit',
+        instagram: 'https://instagram.com/harshit',
+        leetcode: 'https://leetcode.com/harshit'
       },
       
       { 
@@ -244,63 +382,108 @@ const App = () => {
         name: 'Hemank Kumar', 
         rollNo: '043', 
         image: img43,
-        portfolioLink: 'https://hemank-kumar.netlify.app/'
+        portfolioLink: 'https://hemank-kumar.netlify.app/',
+        email: 'hemank@example.com',
+        github: 'https://github.com/hemank',
+        linkedin: 'https://linkedin.com/in/hemank',
+        instagram: 'https://instagram.com/hemank',
+        leetcode: 'https://leetcode.com/hemank'
       },
            { 
         id: 44, 
         name: 'Hemant Singh', 
         rollNo: '044', 
         image: img44,
-        portfolioLink: 'https://hemantsingh-hs.github.io/portfolio/'
+        portfolioLink: 'https://hemantsingh-hs.github.io/portfolio/',
+        email: 'hemant@example.com',
+        github: 'https://github.com/hemant',
+        linkedin: 'https://linkedin.com/in/hemant',
+        instagram: 'https://instagram.com/hemant',
+        leetcode: 'https://leetcode.com/hemant'
       },
       { 
         id: 46, 
         name: 'Himanshu Srivastav', 
         rollNo: '046', 
         image: img46,
-        portfolioLink: 'https://himanshu-770.github.io/portfolio/'
+        portfolioLink: 'https://himanshu-770.github.io/portfolio/',
+        email: 'himanshu@example.com',
+        github: 'https://github.com/himanshu',
+        linkedin: 'https://linkedin.com/in/himanshu',
+        instagram: 'https://instagram.com/himanshu',
+        leetcode: 'https://leetcode.com/himanshu'
       },
          { 
         id: 48, 
         name: 'Ishika Tyagi', 
         rollNo: '048', 
         image: img48,
-        portfolioLink: 'https://tyagiishika609-bot.github.io/ISHIKATYAGI.PORTFOLIO/'
+        portfolioLink: 'https://tyagiishika609-bot.github.io/ISHIKATYAGI.PORTFOLIO/',
+        email: 'ishika@example.com',
+        github: 'https://github.com/ishika',
+        linkedin: 'https://linkedin.com/in/ishika',
+        instagram: 'https://instagram.com/ishika',
+        leetcode: 'https://leetcode.com/ishika'
       },
        { 
         id: 51, 
         name: 'Jatin Kumar', 
         rollNo: '051', 
         image: img51,
-        portfolioLink: 'https://techwithjatin.github.io/my_portfolio.io/'
+        portfolioLink: 'https://techwithjatin.github.io/my_portfolio.io/',
+        email: 'jatin@example.com',
+        github: 'https://github.com/jatin',
+        linkedin: 'https://linkedin.com/in/jatin',
+        instagram: 'https://instagram.com/jatin',
+        leetcode: 'https://leetcode.com/jatin'
       },
         { 
         id: 52, 
         name: 'Kajal', 
         rollNo: '052', 
         image: img52,
-        portfolioLink: 'https://kajalnagar.github.io/KAJAL-PORTFOLIOO/'
+        portfolioLink: 'https://kajalnagar.github.io/KAJAL-PORTFOLIOO/',
+        email: 'kajal@example.com',
+        github: 'https://github.com/kajal',
+        linkedin: 'https://linkedin.com/in/kajal',
+        instagram: 'https://instagram.com/kajal',
+        leetcode: 'https://leetcode.com/kajal'
       },
       { 
         id: 55, 
         name: 'kali bakshi', 
         rollNo: '055', 
         image: img55,
-        portfolioLink: 'https://v0-edgy-portfolio-website.vercel.app/'
+        portfolioLink: 'https://v0-edgy-portfolio-website.vercel.app/',
+        email: 'kali@example.com',
+        github: 'https://github.com/kali',
+        linkedin: 'https://linkedin.com/in/kali',
+        instagram: 'https://instagram.com/kali',
+        leetcode: 'https://leetcode.com/kali'
       },
        { 
         id: 56, 
         name: 'Kamlakar Tiwari', 
         rollNo: '056', 
         image: img56,
-        portfolioLink: 'https://kt-personal-portfolio.netlify.app/ '
+        portfolioLink: 'https://kt-personal-portfolio.netlify.app/ ',
+        email: 'kamlakar@example.com',
+        github: 'https://github.com/kamlakar',
+        linkedin: 'https://linkedin.com/in/kamlakar',
+        instagram: 'https://instagram.com/kamlakar',
+        leetcode: 'https://leetcode.com/kamlakar'
       },
         { 
         id: 59, 
         name: 'Karmik Tyagi', 
         rollNo: '059', 
         image: img59,
-        portfolioLink: 'https://karmiktyagi.github.io/p2/'
+        portfolioLink: 'https://karmiktyagi.github.io/p2/',
+        email: 'karmik@example.com',
+        github: 'https://github.com/karmik',
+        linkedin: 'https://linkedin.com/in/karmik',
+        instagram: 'https://instagram.com/karmik',
+        leetcode: 'https://leetcode.com/karmik'
       },
       
       
@@ -311,6 +494,21 @@ const App = () => {
     student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     student.rollNo.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  const handleCardClick = (student, e) => {
+    e.preventDefault();
+    setSelectedStudent(student);
+    setIsBottomSheetOpen(true);
+  };
+
+  const closeBottomSheet = () => {
+    setIsBottomSheetOpen(false);
+    setTimeout(() => setSelectedStudent(null), 300);
+  };
+
+  const handleLinkClick = (url) => {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <div className="app">
@@ -333,23 +531,34 @@ const App = () => {
       <main className="main">
         <div className="container">
         <div className="cards-grid">
-            {filteredStudents.map(student => (
-              <a
-                key={student.id}
-                href={student.portfolioLink}
-                className="card"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <div className="card-image">
-                  <img src={student.image} alt={student.name} />
-                </div>
-                <div className="card-content">
-                  <h3 className="card-name">{student.name}</h3>
-                  <p className="card-roll">Roll No: {student.rollNo}</p>
-                </div>
-              </a>
-            ))}
+            {filteredStudents.map((student, index) => (
+                <motion.div
+                  key={student.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -2 }}
+                  onClick={(e) => handleCardClick(student, e)}
+                  className="card"
+                >
+                  <div className="card-image">
+                    <motion.img 
+                      src={student.image} 
+                      alt={student.name}
+                      whileHover={{ scale: 1.05 }}
+                    />
+                  </div>
+                  <div className="card-content">
+                    <motion.h3 
+                      className="card-name"
+                      whileHover={{ color: '#D97757' }}
+                    >
+                      {student.name}
+                    </motion.h3>
+                    <p className="card-roll">Roll No: {student.rollNo}</p>
+                  </div>
+                </motion.div>
+              ))}
           </div>
           
           {filteredStudents.length === 0 && (
@@ -358,6 +567,233 @@ const App = () => {
             </div>
           )}
         </div>
+      <AnimatePresence>
+          {isBottomSheetOpen && selectedStudent && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={closeBottomSheet}
+                style={{
+                  position: 'fixed',
+                  inset: 0,
+                  backgroundColor: 'rgba(0,0,0,0.5)',
+                  backdropFilter: 'blur(4px)',
+                  zIndex: 40
+                }}
+              />
+              
+              <motion.div
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "100%" }}
+                transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                drag="y"
+                dragConstraints={{ top: 0, bottom: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(_, info) => {
+                  if (info.offset.y > 100) {
+                    closeBottomSheet();
+                  }
+                }}
+                style={{
+                  position: 'fixed',
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  backgroundColor: '#F0EEE6',
+                  borderTopLeftRadius: '24px',
+                  borderTopRightRadius: '24px',
+                  padding: '1.5rem',
+                  zIndex: 50,
+                  maxHeight: '80vh',
+                  overflowY: 'auto',
+                  boxShadow: '0 -10px 30px rgba(0,0,0,0.1)'
+                }}
+              >
+                <div style={{
+                  width: '48px',
+                  height: '6px',
+                  backgroundColor: '#D97757',
+                  borderRadius: '3px',
+                  margin: '0 auto 1.5rem',
+                  opacity: 0.3
+                }}></div>
+                
+                <button
+                  onClick={closeBottomSheet}
+                  style={{
+                    position: 'absolute',
+                    top: '16px',
+                    right: '16px',
+                    padding: '8px',
+                    borderRadius: '50%',
+                    backgroundColor: '#E3DACC',
+                    border: 'none',
+                    color: '#555',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                  }}
+                >
+                  <X size={20} />
+                </button>
+                
+                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                  <h2 style={{
+                    fontSize: '1.5rem',
+                    fontWeight: '600',
+                    color: '#222',
+                    marginBottom: '0.5rem'
+                  }}>
+                    {selectedStudent.name}
+                  </h2>
+                  <p style={{ color: '#717171', fontSize: '1rem' }}>
+                    Roll No: {selectedStudent.rollNo}
+                  </p>
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  {/* Email Section */}
+                  <motion.div 
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.1 }}
+                    style={{
+                      backgroundColor: '#E3DACC',
+                      padding: '1.2rem',
+                      borderRadius: '16px',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                    }}
+                  >
+                    <h3 style={{
+                      fontWeight: '600',
+                      color: '#222',
+                      marginBottom: '0.8rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem'
+                    }}>
+                      <Mail size={20} style={{ color: '#D97757' }} />
+                      Email
+                    </h3>
+                    <button
+                      onClick={() => window.open(`mailto:${selectedStudent.email}`)}
+                      style={{
+                        color: '#D97757',
+                        backgroundColor: 'transparent',
+                        border: 'none',
+                        cursor: 'pointer',
+                        textDecoration: 'underline',
+                        fontSize: '1rem'
+                      }}
+                    >
+                      {selectedStudent.email}
+                    </button>
+                  </motion.div>
+
+                  {/* Portfolio Section */}
+                  <motion.div 
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    style={{
+                      backgroundColor: '#E3DACC',
+                      padding: '1.2rem',
+                      borderRadius: '16px',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                    }}
+                  >
+                    <h3 style={{
+                      fontWeight: '600',
+                      color: '#222',
+                      marginBottom: '0.8rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem'
+                    }}>
+                      <ExternalLink size={20} style={{ color: '#D97757' }} />
+                      Portfolio
+                    </h3>
+                    <button
+                      onClick={() => handleLinkClick(selectedStudent.portfolioLink)}
+                      style={{
+                        color: '#D97757',
+                        backgroundColor: 'transparent',
+                        border: 'none',
+                        cursor: 'pointer',
+                        textDecoration: 'underline',
+                        wordBreak: 'break-all',
+                        fontSize: '0.9rem'
+                      }}
+                    >
+                      {selectedStudent.portfolioLink}
+                    </button>
+                  </motion.div>
+
+                  {/* Social Links */}
+                  <motion.div 
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    style={{
+                      backgroundColor: '#E3DACC',
+                      padding: '1.2rem',
+                      borderRadius: '16px',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                    }}
+                  >
+                    <h3 style={{
+                      fontWeight: '600',
+                      color: '#222',
+                      marginBottom: '1rem'
+                    }}>
+                      Social Links
+                    </h3>
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(2, 1fr)',
+                      gap: '0.75rem'
+                    }}>
+                      {[
+                        { icon: Github, name: 'GitHub', link: selectedStudent.github, color: '#333' },
+                        { icon: Linkedin, name: 'LinkedIn', link: selectedStudent.linkedin, color: '#0077b5' },
+                        { icon: Instagram, name: 'Instagram', link: selectedStudent.instagram, color: '#e4405f' },
+                        { icon: Code, name: 'LeetCode', link: selectedStudent.leetcode, color: '#f89f1b' }
+                      ].map(({ icon: Icon, name, link, color }) => (
+                        <motion.button
+                          key={name}
+                          onClick={() => handleLinkClick(link)}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            padding: '0.75rem',
+                            backgroundColor: '#F0EEE6',
+                            borderRadius: '12px',
+                            border: '1px solid rgba(217, 119, 87, 0.2)',
+                            cursor: 'pointer',
+                            color: '#222',
+                            gap: '0.5rem',
+                            transition: 'all 0.3s ease',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                          }}
+                        >
+                          <Icon size={18} style={{ color }} />
+                          <span style={{ fontWeight: '500', fontSize: '0.9rem' }}>{name}</span>
+                        </motion.button>
+                      ))}
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
       </main>
     </div>
   );
