@@ -40,9 +40,22 @@ import img55 from './assets/Studentimages/55.png';
 import img56 from './assets/Studentimages/56.png';
 import img59 from './assets/Studentimages/59.png';
 
+interface Student {
+  id: number;
+  name: string;
+  rollNo: string;
+  image: string;
+  portfolioLink: string;
+  email: string;
+  github: string;
+  linkedin: string;
+  instagram: string;
+  leetcode: string;
+}
+
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedStudent, setSelectedStudent] = useState(null);
+  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
 
 
@@ -495,7 +508,7 @@ const App = () => {
     student.rollNo.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleCardClick = (student, e) => {
+  const handleCardClick = (student: Student, e: React.MouseEvent) => {
     e.preventDefault();
     setSelectedStudent(student);
     setIsBottomSheetOpen(true);
@@ -506,7 +519,7 @@ const App = () => {
     setTimeout(() => setSelectedStudent(null), 300);
   };
 
-  const handleLinkClick = (url) => {
+  const handleLinkClick = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
