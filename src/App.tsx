@@ -228,7 +228,7 @@ const App = () => {
         name: 'Harshit saini', 
         rollNo: '042', 
         image: img42,
-        portfolioLink: 'https://github.com/harshitsaini-2004/harshitsaini-2004.github.io/tree/main/my%20portfolio'
+        portfolioLink: 'https://harshitsaini-2004.github.io/'
       },
       
       { 
