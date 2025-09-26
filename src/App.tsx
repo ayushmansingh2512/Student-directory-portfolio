@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import { X, Mail, ExternalLink, Github, Linkedin, Instagram, Code } from 'lucide-react';
 import './App.css';
 import img1 from './assets/Studentimages/1.png';
@@ -522,9 +522,12 @@ const App = () => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
+  const y = useMotionValue(0);
+  const headerOpacity = useTransform(y, [0, 100], [1, 0.5]); // Adjust header opacity based on drag
+
   return (
     <div className="app">
-      <header className="header">
+      <motion.header className="header" style={{ opacity: headerOpacity }}>
         <div className="container">
           <h1 className="logo">{siteData.title}</h1>
           <p className="para">{siteData.para}</p>
@@ -538,7 +541,7 @@ const App = () => {
             />
           </div>
         </div>
-      </header>
+      </motion.header>
 
       <main className="main">
         <div className="container">
@@ -602,8 +605,11 @@ const App = () => {
                 exit={{ y: "100%" }}
                 transition={{ type: "spring", damping: 30, stiffness: 300 }}
                 drag="y"
-                dragConstraints={{ top: 0, bottom: 0 }}
+                dragConstraints={{ top: 0 }} // Allow dragging downwards
                 dragElastic={0.2}
+                onDrag={(_, info) => {
+                  y.set(info.offset.y); // Update the motion value 'y' during drag
+                }}
                 onDragEnd={(_, info) => {
                   if (info.offset.y > 100) {
                     closeBottomSheet();
@@ -621,7 +627,8 @@ const App = () => {
                   zIndex: 50,
                   maxHeight: '80vh',
                   overflowY: 'auto',
-                  boxShadow: '0 -10px 30px rgba(0,0,0,0.1)'
+                  boxShadow: '0 -10px 30px rgba(0,0,0,0.1)',
+                  y // Apply the motion value 'y' to the style
                 }}
               >
                 <div style={{
