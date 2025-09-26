@@ -118,7 +118,7 @@ const App = () => {
         portfolioLink: 'https://deepaktyagi2002.github.io/p1/'
       },
            { 
-        id: 15, 
+        id: 17, 
         name: 'Deepanshi Mishra', 
         rollNo: '017', 
         image: img17,
