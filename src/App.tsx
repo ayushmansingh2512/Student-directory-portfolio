@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { X, Mail, ExternalLink, Github, Linkedin, Instagram, Code } from 'lucide-react';
 import './App.css';
 import img1 from './assets/Studentimages/1.png';
@@ -523,9 +523,6 @@ const App = () => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
-  const y = useMotionValue(0);
-  const headerOpacity = useTransform(y, [0, 100], [1, 0.5]); // Adjust header opacity based on drag
-
   return (
     <div className="app">
       <motion.header className="header" style={{ opacity: headerOpacity }}>
@@ -596,7 +593,7 @@ const App = () => {
                   inset: 0,
                   backgroundColor: 'rgba(0,0,0,0.5)',
                   backdropFilter: 'blur(4px)',
-                  zIndex: 40
+                  zIndex: 40,
                 }}
               />
 
@@ -605,17 +602,13 @@ const App = () => {
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
                 transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                drag={isDragEnabled ? "y" : false} // Conditional drag
-                dragConstraints={{ top: 0 }} // Allow dragging downwards
-                dragElastic={0.2}
-                onDrag={(_, info) => {
-                  y.set(info.offset.y); // Update the motion value 'y' during drag
-                }}
+                drag={isDragEnabled ? "y" : false}
+                dragConstraints={{ top: 0, bottom: 0 }} // Restrict dragging to only downward
+                dragElastic={0.1} // Reduce elasticity for a tighter drag feel
+                dragMomentum={false} // Disable momentum to prevent overshooting
                 onDragEnd={(_, info) => {
-                  if (info.offset.y > 100) {
+                  if (info.offset.y > 100) { // Close if dragged down more than 100px
                     closeBottomSheet();
-                  } else {
-                    y.set(0); // Snap back to 0 if not closed
                   }
                   setIsDragEnabled(false); // Disable drag after drag ends
                 }}
@@ -632,34 +625,37 @@ const App = () => {
                   maxHeight: '80vh',
                   overflowY: 'auto',
                   boxShadow: '0 -10px 30px rgba(0,0,0,0.1)',
-                  y // Apply the motion value 'y' to the style
                 }}
               >
                 <div
                   id="bottom-sheet-drag-handle"
                   onPointerDown={() => setIsDragEnabled(true)} // Enable drag on pointer down
                   style={{
-                    cursor: 'grab', // Indicate it's draggable
-                    paddingBottom: '1.5rem', // Add some padding to the bottom of the draggable area
-                    marginBottom: '0.5rem' // Adjust margin to separate from content below
+                    cursor: 'grab',
+                    paddingBottom: '1.5rem',
+                    marginBottom: '0.5rem',
                   }}
                 >
-                  <div style={{
-                    width: '48px',
-                    height: '6px',
-                    backgroundColor: '#D97757',
-                    borderRadius: '3px',
-                    margin: '0 auto 1.5rem',
-                    opacity: 0.3
-                  }}></div>
+                  <div
+                    style={{
+                      width: '48px',
+                      height: '6px',
+                      backgroundColor: '#D97757',
+                      borderRadius: '3px',
+                      margin: '0 auto 1.5rem',
+                      opacity: 0.3,
+                    }}
+                  ></div>
 
                   <div style={{ textAlign: 'center' }}>
-                    <h2 style={{
-                      fontSize: '1.5rem',
-                      fontWeight: '600',
-                      color: '#222',
-                      marginBottom: '0.5rem'
-                    }}>
+                    <h2
+                      style={{
+                        fontSize: '1.5rem',
+                        fontWeight: '600',
+                        color: '#222',
+                        marginBottom: '0.5rem',
+                      }}
+                    >
                       {selectedStudent.name}
                     </h2>
                     <p style={{ color: '#717171', fontSize: '1rem' }}>
@@ -683,7 +679,7 @@ const App = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
                   }}
                 >
                   <X size={20} />
@@ -699,17 +695,19 @@ const App = () => {
                       backgroundColor: '#E3DACC',
                       padding: '1.2rem',
                       borderRadius: '16px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                     }}
                   >
-                    <h3 style={{
-                      fontWeight: '600',
-                      color: '#222',
-                      marginBottom: '0.8rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem'
-                    }}>
+                    <h3
+                      style={{
+                        fontWeight: '600',
+                        color: '#222',
+                        marginBottom: '0.8rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                      }}
+                    >
                       <Mail size={20} style={{ color: '#D97757' }} />
                       Email
                     </h3>
@@ -721,7 +719,7 @@ const App = () => {
                         border: 'none',
                         cursor: 'pointer',
                         textDecoration: 'underline',
-                        fontSize: '1rem'
+                        fontSize: '1rem',
                       }}
                     >
                       {selectedStudent.email}
@@ -737,17 +735,19 @@ const App = () => {
                       backgroundColor: '#E3DACC',
                       padding: '1.2rem',
                       borderRadius: '16px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                     }}
                   >
-                    <h3 style={{
-                      fontWeight: '600',
-                      color: '#222',
-                      marginBottom: '0.8rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem'
-                    }}>
+                    <h3
+                      style={{
+                        fontWeight: '600',
+                        color: '#222',
+                        marginBottom: '0.8rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                      }}
+                    >
                       <ExternalLink size={20} style={{ color: '#D97757' }} />
                       Portfolio
                     </h3>
@@ -760,7 +760,7 @@ const App = () => {
                         cursor: 'pointer',
                         textDecoration: 'underline',
                         wordBreak: 'break-all',
-                        fontSize: '0.9rem'
+                        fontSize: '0.9rem',
                       }}
                     >
                       {selectedStudent.portfolioLink}
@@ -776,26 +776,30 @@ const App = () => {
                       backgroundColor: '#E3DACC',
                       padding: '1.2rem',
                       borderRadius: '16px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                     }}
                   >
-                    <h3 style={{
-                      fontWeight: '600',
-                      color: '#222',
-                      marginBottom: '1rem'
-                    }}>
+                    <h3
+                      style={{
+                        fontWeight: '600',
+                        color: '#222',
+                        marginBottom: '1rem',
+                      }}
+                    >
                       Social Links
                     </h3>
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(2, 1fr)',
-                      gap: '0.75rem'
-                    }}>
+                    <div
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, 1fr)',
+                        gap: '0.75rem',
+                      }}
+                    >
                       {[
                         { icon: Github, name: 'GitHub', link: selectedStudent.github, color: '#333' },
                         { icon: Linkedin, name: 'LinkedIn', link: selectedStudent.linkedin, color: '#0077b5' },
                         { icon: Instagram, name: 'Instagram', link: selectedStudent.instagram, color: '#e4405f' },
-                        { icon: Code, name: 'LeetCode', link: selectedStudent.leetcode, color: '#f89f1b' }
+                        { icon: Code, name: 'LeetCode', link: selectedStudent.leetcode, color: '#f89f1b' },
                       ].map(({ icon: Icon, name, link, color }) => (
                         <motion.button
                           key={name}
@@ -813,7 +817,7 @@ const App = () => {
                             color: '#222',
                             gap: '0.5rem',
                             transition: 'all 0.3s ease',
-                            boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
                           }}
                         >
                           <Icon size={18} style={{ color }} />
