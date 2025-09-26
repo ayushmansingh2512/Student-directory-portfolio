@@ -507,18 +507,18 @@ const App = () => {
     student.rollNo.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleCardClick = (student: Student, e: React.MouseEvent<HTMLDivElement>) => {
+  const handleCardClick = (student: Student, e: React.MouseEvent<HTMLDivElement>): void => {
     e.preventDefault();
     setSelectedStudent(student);
     setIsBottomSheetOpen(true);
   };
 
-  const closeBottomSheet = () => {
+  const closeBottomSheet = (): void => {
     setIsBottomSheetOpen(false);
     setTimeout(() => setSelectedStudent(null), 300);
   };
 
-  const handleLinkClick = (url: string) => {
+  const handleLinkClick = (url: string): void => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
@@ -736,7 +736,6 @@ const App = () => {
                         color: '#D97757',
                         backgroundColor: 'transparent',
                         border: 'none',
-        
                         cursor: 'pointer',
                         textDecoration: 'underline',
                         wordBreak: 'break-all',

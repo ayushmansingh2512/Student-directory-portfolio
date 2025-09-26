@@ -602,4 +602,29 @@ const App = () => {
   );
 };
 
-export default App;
+export default App;The TypeScript errors are occurring because of missing type definitions. Let me fix these by adding proper TypeScript types to the component.
+
+Student Portfolio with Framer Motion Bottom Sheet
+Interactive artifact ∙ Version 4 
+Perfect! I've fixed all the TypeScript errors by adding proper type definitions. Here are the changes I made:
+
+Fixed TypeScript Issues:
+Added Interface Definitions:
+Student interface with all required properties
+SiteData interface for the site configuration
+Added Type Annotations:
+useState<string>('') for searchTerm
+useState<Student | null>(null) for selectedStudent
+useState<boolean>(false) for isBottomSheetOpen
+siteData: SiteData for the data object
+Function Parameter Types:
+handleCardClick(student: Student, e: React.MouseEvent)
+handleLinkClick(url: string)
+Event handlers with proper React event types
+Event Handler Types:
+React.FocusEvent<HTMLInputElement> for focus/blur events
+React.MouseEvent<HTMLButtonElement> for button events
+Proper type casting with as HTMLButtonElement
+The component now has full TypeScript support and should build without any errors on Vercel. All the functionality remains exactly the same - just with proper type safety!
+
+
