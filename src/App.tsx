@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence, useDragControls } from 'framer-motion';
+import { motion, AnimatePresence, useDragControls, useMotionValue } from 'framer-motion';
 import { X, Mail, ExternalLink, Github, Linkedin, Instagram, Code } from 'lucide-react';
 import './App.css';
 import img1 from './assets/Studentimages/1.png';
@@ -63,6 +63,7 @@ const App = () => {
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState<boolean>(false);
   const controls = useDragControls();
+  const y = useMotionValue(0);
 
   const siteData: SiteData = {
     title: 'Student Portfolio Directory',
@@ -603,13 +604,18 @@ const App = () => {
                 exit={{ y: '100%' }}
                 transition={{ type: 'spring', damping: 50, stiffness: 200 }}
                 drag="y"
-                dragConstraints={{ top: 0, bottom: 0 }} // Prevent upward drag, allow downward
+                dragConstraints={{ top: 0 }} // Prevent upward drag, allow downward
                 dragElastic={0.1} // Tighter drag feel
                 dragMomentum={false} // Disable momentum
                 dragControls={controls}
+                onDrag={(_, info) => {
+                  y.set(info.offset.y); // Update the motion value 'y' during drag
+                }}
                 onDragEnd={(_, info) => {
                   if (info.offset.y > 100) { // Close if dragged down more than 100px
                     closeBottomSheet();
+                  } else {
+                    y.set(0); // Snap back to 0 if not closed
                   }
                 }}
                 style={{
@@ -625,6 +631,7 @@ const App = () => {
                   maxHeight: '80vh',
                   overflowY: 'auto', // Allow scrolling inside
                   boxShadow: '0 -10px 30px rgba(0,0,0,0.1)',
+                  y // Apply the motion value 'y' to the style
                 }}
               >
                 <div
