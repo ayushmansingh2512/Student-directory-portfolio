@@ -26,6 +26,7 @@ import img41 from './assets/Studentimages/41.png';
 import img43 from './assets/Studentimages/43.png';
 import img44 from './assets/Studentimages/44.png';
 import img46 from './assets/Studentimages/46.png';
+import img48 from './assets/Studentimages/48.png';
 import img51 from './assets/Studentimages/51.png';
 import img52 from './assets/Studentimages/52.png';
 import img55 from './assets/Studentimages/55.png';
@@ -196,6 +197,7 @@ const App = () => {
         image: img41,
         portfolioLink: 'https://verma0104.github.io/P01/'
       },
+      
       { 
         id: 43, 
         name: 'Hemank Kumar', 
@@ -216,6 +218,13 @@ const App = () => {
         rollNo: '046', 
         image: img46,
         portfolioLink: 'https://himanshu-770.github.io/portfolio/'
+      },
+         { 
+        id: 48, 
+        name: 'Ishika Tyagi', 
+        rollNo: '048', 
+        image: img48,
+        portfolioLink: 'https://tyagiishika609-bot.github.io/ISHIKATYAGI.PORTFOLIO/'
       },
        { 
         id: 51, 
