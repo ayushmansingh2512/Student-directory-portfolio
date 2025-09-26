@@ -26,6 +26,7 @@ import img34 from './assets/Studentimages/34.png';
 import img35 from './assets/Studentimages/35.png';
 import img40 from './assets/Studentimages/40.png';
 import img41 from './assets/Studentimages/41.png';
+import img42 from './assets/Studentimages/42.png';
 import img43 from './assets/Studentimages/43.png';
 import img44 from './assets/Studentimages/44.png';
 import img46 from './assets/Studentimages/46.png';
@@ -101,7 +102,7 @@ const App = () => {
         name: 'Chandra Vijay Singh', 
         rollNo: '010', 
         image: img10,
-        portfolioLink: 'https://chandravijaysinghportfolio.netlify.app/'
+        portfolioLink: 'https://chandravijayportfolio.netlify.app/'
       },
          { 
         id: 14, 
@@ -221,6 +222,13 @@ const App = () => {
         rollNo: '041', 
         image: img41,
         portfolioLink: 'https://verma0104.github.io/P01/'
+      },
+        { 
+        id: 42, 
+        name: 'Harshit saini', 
+        rollNo: '042', 
+        image: img42,
+        portfolioLink: 'https://github.com/harshitsaini-2004/harshitsaini-2004.github.io/tree/main/my%20portfolio'
       },
       
       { 
