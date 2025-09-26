@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import './App.css';  
 import img1 from './assets/Studentimages/1.png';
+import img3 from './assets/Studentimages/3.png';
 import img5 from './assets/Studentimages/5.png';
 import img6 from './assets/Studentimages/6.png';
 import img9 from './assets/Studentimages/9.png';
@@ -11,6 +12,7 @@ import img18 from './assets/Studentimages/18.png';
 import img22 from './assets/Studentimages/22.png';
 import img24 from './assets/Studentimages/24.png';
 import img25 from './assets/Studentimages/25.png';
+import img26 from './assets/Studentimages/26.png';
 import img27 from './assets/Studentimages/27.png';
 import img28 from './assets/Studentimages/28.png';
 import img32 from './assets/Studentimages/32.png';
@@ -38,6 +40,13 @@ const App = () => {
         rollNo: '001', 
         image: img1,
         portfolioLink: 'https://ayushman-singh-portfolio.vercel.app'
+      },
+            { 
+        id: 3, 
+        name: 'Bhargwi raj', 
+        rollNo: '003', 
+        image: img3,
+        portfolioLink: 'https://bhargwiraj.github.io/p1/'
       },
   { 
         id: 5, 
@@ -103,6 +112,14 @@ const App = () => {
         image: img25,
         portfolioLink: 'https://dhruvgoel23.github.io/First_portfolio/'
       },
+      { 
+        id: 26, 
+        name: 'Dhruv mittal', 
+        rollNo: '026', 
+        image: img26,
+        portfolioLink: 'https://dhruvmittal7652-star.github.io/dhruvmittal.github.io/'
+      },
+
             { 
         id: 27, 
         name: 'Divya Jha', 
