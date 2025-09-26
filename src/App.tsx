@@ -609,13 +609,13 @@ const App = () => {
                               boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
                             }}
                             onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
-                              const target = e.target as HTMLButtonElement;
+                              const target = e.currentTarget as HTMLButtonElement;
                               target.style.backgroundColor = '#D97757';
                               target.style.color = 'white';
                               target.style.transform = 'translateY(-2px)';
                             }}
                             onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
-                              const target = e.target as HTMLButtonElement;
+                              const target = e.currentTarget as HTMLButtonElement;
                               target.style.backgroundColor = '#F0EEE6';
                               target.style.color = '#222';
                               target.style.transform = 'translateY(0)';
