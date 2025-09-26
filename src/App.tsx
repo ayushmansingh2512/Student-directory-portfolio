@@ -604,6 +604,20 @@ const App = () => {
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
                 transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                drag="y" // Make the entire bottom sheet draggable
+                dragConstraints={{ top: 0 }} // Allow dragging downwards
+                dragElastic={0.2}
+                onDrag={(_, info) => {
+                  y.set(info.offset.y); // Update the motion value 'y' during drag
+                }}
+                onDragEnd={(_, info) => {
+                  if (info.offset.y > 100) {
+                    closeBottomSheet();
+                  } else {
+                    y.set(0); // Snap back to 0 if not closed
+                  }
+                }}
+                dragHandle="#bottom-sheet-drag-handle" // Specify the draggable area
                 style={{
                   position: 'fixed',
                   bottom: 0,
@@ -620,21 +634,7 @@ const App = () => {
                   y // Apply the motion value 'y' to the style
                 }}
               >
-                <motion.div
-                  drag="y"
-                  dragConstraints={{ top: 0 }} // Allow dragging downwards
-                  dragElastic={0.2}
-                  onDrag={(_, info) => {
-                    y.set(info.offset.y); // Update the motion value 'y' during drag
-                  }}
-                  onDragEnd={(_, info) => {
-                    if (info.offset.y > 100) {
-                      closeBottomSheet();
-                    } else {
-                      y.set(0); // Snap back to 0 if not closed
-                    }
-                  }}
-                  style={{
+                <div id="bottom-sheet-drag-handle" style={{ // This is the new draggable header div
                     cursor: 'grab', // Indicate it's draggable
                     paddingBottom: '1.5rem', // Add some padding to the bottom of the draggable area
                     marginBottom: '0.5rem' // Adjust margin to separate from content below
@@ -662,7 +662,7 @@ const App = () => {
                       Roll No: {selectedStudent.rollNo}
                     </p>
                   </div>
-                </motion.div>
+                </div>
 
                 <button
                   onClick={closeBottomSheet}
