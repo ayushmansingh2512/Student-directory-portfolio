@@ -33,6 +33,7 @@ import img51 from './assets/Studentimages/51.png';
 import img52 from './assets/Studentimages/52.png';
 import img55 from './assets/Studentimages/55.png';
 import img56 from './assets/Studentimages/56.png';
+import img59 from './assets/Studentimages/59.png';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
