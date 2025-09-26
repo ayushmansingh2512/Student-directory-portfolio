@@ -638,8 +638,6 @@ const App = () => {
                 <div
                   id="bottom-sheet-drag-handle"
                   onPointerDown={() => setIsDragEnabled(true)} // Enable drag on pointer down
-                  onPointerUp={() => setIsDragEnabled(false)}   // Disable drag on pointer up
-                  onPointerLeave={() => setIsDragEnabled(false)} // Disable drag if pointer leaves
                   style={{
                     cursor: 'grab', // Indicate it's draggable
                     paddingBottom: '1.5rem', // Add some padding to the bottom of the draggable area
