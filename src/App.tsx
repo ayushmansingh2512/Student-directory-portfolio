@@ -631,19 +631,38 @@ const App = () => {
                     if (info.offset.y > 100) {
                       closeBottomSheet();
                     } else {
-                      y.set(0); // Snap back to 0 if not closed
+                      y.set(0, { type: "spring", damping: 30, stiffness: 300 }); // Animate back to 0
                     }
                   }}
                   style={{
+                    cursor: 'grab', // Indicate it's draggable
+                    paddingBottom: '1.5rem', // Add some padding to the bottom of the draggable area
+                    marginBottom: '0.5rem' // Adjust margin to separate from content below
+                  }}
+                >
+                  <div style={{
                     width: '48px',
                     height: '6px',
                     backgroundColor: '#D97757',
                     borderRadius: '3px',
                     margin: '0 auto 1.5rem',
-                    opacity: 0.3,
-                    cursor: 'grab' // Indicate it's draggable
-                  }}
-                ></motion.div>
+                    opacity: 0.3
+                  }}></div>
+
+                  <div style={{ textAlign: 'center' }}>
+                    <h2 style={{
+                      fontSize: '1.5rem',
+                      fontWeight: '600',
+                      color: '#222',
+                      marginBottom: '0.5rem'
+                    }}>
+                      {selectedStudent.name}
+                    </h2>
+                    <p style={{ color: '#717171', fontSize: '1rem' }}>
+                      Roll No: {selectedStudent.rollNo}
+                    </p>
+                  </div>
+                </motion.div>
 
                 <button
                   onClick={closeBottomSheet}
@@ -665,20 +684,6 @@ const App = () => {
                 >
                   <X size={20} />
                 </button>
-
-                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                  <h2 style={{
-                    fontSize: '1.5rem',
-                    fontWeight: '600',
-                    color: '#222',
-                    marginBottom: '0.5rem'
-                  }}>
-                    {selectedStudent.name}
-                  </h2>
-                  <p style={{ color: '#717171', fontSize: '1rem' }}>
-                    Roll No: {selectedStudent.rollNo}
-                  </p>
-                </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                   {/* Email Section */}
