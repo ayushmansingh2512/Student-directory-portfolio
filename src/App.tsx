@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useDragControls } from 'framer-motion';
 import { X, Mail, ExternalLink, Github, Linkedin, Instagram, Code } from 'lucide-react';
 import './App.css';
 import img1 from './assets/Studentimages/1.png';
@@ -62,7 +62,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState<boolean>(false);
-  const [isDragEnabled, setIsDragEnabled] = useState(false); // New state for conditional drag
+  const controls = useDragControls();
 
   const siteData: SiteData = {
     title: 'Student Portfolio Directory',
@@ -598,19 +598,19 @@ const App = () => {
               />
 
               <motion.div
-                initial={{ y: "100%" }}
+                initial={{ y: '100%' }}
                 animate={{ y: 0 }}
-                exit={{ y: "100%" }}
-                transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                drag={isDragEnabled ? "y" : false}
-                dragConstraints={{ top: 0, bottom: 0 }} // Restrict dragging to only downward
-                dragElastic={0.1} // Reduce elasticity for a tighter drag feel
-                dragMomentum={false} // Disable momentum to prevent overshooting
+                exit={{ y: '100%' }}
+                transition={{ type: 'spring', damping: 50, stiffness: 200 }}
+                drag="y"
+                dragConstraints={{ top: 0, bottom: 0 }} // Prevent upward drag, allow downward
+                dragElastic={0.1} // Tighter drag feel
+                dragMomentum={false} // Disable momentum
+                dragControls={controls}
                 onDragEnd={(_, info) => {
                   if (info.offset.y > 100) { // Close if dragged down more than 100px
                     closeBottomSheet();
                   }
-                  setIsDragEnabled(false); // Disable drag after drag ends
                 }}
                 style={{
                   position: 'fixed',
@@ -623,13 +623,13 @@ const App = () => {
                   padding: '1.5rem',
                   zIndex: 50,
                   maxHeight: '80vh',
-                  overflowY: 'auto',
+                  overflowY: 'auto', // Allow scrolling inside
                   boxShadow: '0 -10px 30px rgba(0,0,0,0.1)',
                 }}
               >
                 <div
                   id="bottom-sheet-drag-handle"
-                  onPointerDown={() => setIsDragEnabled(true)} // Enable drag on pointer down
+                  onPointerDown={(e) => controls.start(e)} // Start drag only on handle
                   style={{
                     cursor: 'grab',
                     paddingBottom: '1.5rem',
@@ -685,7 +685,14 @@ const App = () => {
                   <X size={20} />
                 </button>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1.5rem',
+                    paddingBottom: '2rem', // Extra padding to ensure scrollable content is accessible
+                  }}
+                >
                   {/* Email Section */}
                   <motion.div
                     initial={{ x: -20, opacity: 0 }}
