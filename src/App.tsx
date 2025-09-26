@@ -10,6 +10,7 @@ import img10 from './assets/Studentimages/10.png';
 import img14 from './assets/Studentimages/14.png';
 import img15 from './assets/Studentimages/15.png';
 import img18 from './assets/Studentimages/18.png';
+import img19 from './assets/Studentimages/19.png';
 import img22 from './assets/Studentimages/22.png';
 import img24 from './assets/Studentimages/24.png';
 import img25 from './assets/Studentimages/25.png';
@@ -68,6 +69,13 @@ const App = () => {
         image: img6,
         portfolioLink: 'https://bhavyatyagi013-bit.github.io/portfolio/'
       },
+           { 
+        id: 7, 
+        name: 'Bhawana Pathak', 
+        rollNo: '007', 
+        image: img7,
+        portfolioLink: 'https://pathakbhawna32.github.io/BHAWANA-PORTFOLIO/'
+      },
        { 
         id: 9, 
         name: 'Bhumi Bhardwaj', 
@@ -102,6 +110,12 @@ const App = () => {
         rollNo: '018', 
         image: img18,
         portfolioLink: 'https://deepanshu9898.github.io/deepanshu/'
+      },  { 
+        id: 19, 
+        name: 'Deepika Sharma ', 
+        rollNo: '019', 
+        image: img19,
+        portfolioLink: 'https://deepikasharma-04.github.io/Project/'
       },
              { 
         id: 22, 
