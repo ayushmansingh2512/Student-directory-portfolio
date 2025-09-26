@@ -62,6 +62,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState<boolean>(false);
+  const [isDragEnabled, setIsDragEnabled] = useState(false); // New state for conditional drag
 
   const siteData: SiteData = {
     title: 'Student Portfolio Directory',
@@ -604,7 +605,7 @@ const App = () => {
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
                 transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                drag="y" // Make the entire bottom sheet draggable
+                drag={isDragEnabled ? "y" : false} // Conditional drag
                 dragConstraints={{ top: 0 }} // Allow dragging downwards
                 dragElastic={0.2}
                 onDrag={(_, info) => {
@@ -616,8 +617,8 @@ const App = () => {
                   } else {
                     y.set(0); // Snap back to 0 if not closed
                   }
+                  setIsDragEnabled(false); // Disable drag after drag ends
                 }}
-                dragHandle="#bottom-sheet-drag-handle" // Specify the draggable area
                 style={{
                   position: 'fixed',
                   bottom: 0,
@@ -634,7 +635,12 @@ const App = () => {
                   y // Apply the motion value 'y' to the style
                 }}
               >
-                <div id="bottom-sheet-drag-handle" style={{ // This is the new draggable header div
+                <div
+                  id="bottom-sheet-drag-handle"
+                  onPointerDown={() => setIsDragEnabled(true)} // Enable drag on pointer down
+                  onPointerUp={() => setIsDragEnabled(false)}   // Disable drag on pointer up
+                  onPointerLeave={() => setIsDragEnabled(false)} // Disable drag if pointer leaves
+                  style={{
                     cursor: 'grab', // Indicate it's draggable
                     paddingBottom: '1.5rem', // Add some padding to the bottom of the draggable area
                     marginBottom: '0.5rem' // Adjust margin to separate from content below
