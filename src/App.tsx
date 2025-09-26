@@ -525,7 +525,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <motion.header className="header" style={{ opacity: headerOpacity }}>
+      <motion.header className="header">
         <div className="container">
           <h1 className="logo">{siteData.title}</h1>
           <p className="para">{siteData.para}</p>
