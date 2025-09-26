@@ -604,17 +604,6 @@ const App = () => {
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
                 transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                drag="y"
-                dragConstraints={{ top: 0 }} // Allow dragging downwards
-                dragElastic={0.2}
-                onDrag={(_, info) => {
-                  y.set(info.offset.y); // Update the motion value 'y' during drag
-                }}
-                onDragEnd={(_, info) => {
-                  if (info.offset.y > 100) {
-                    closeBottomSheet();
-                  }
-                }}
                 style={{
                   position: 'fixed',
                   bottom: 0,
@@ -631,14 +620,30 @@ const App = () => {
                   y // Apply the motion value 'y' to the style
                 }}
               >
-                <div style={{
-                  width: '48px',
-                  height: '6px',
-                  backgroundColor: '#D97757',
-                  borderRadius: '3px',
-                  margin: '0 auto 1.5rem',
-                  opacity: 0.3
-                }}></div>
+                <motion.div
+                  drag="y"
+                  dragConstraints={{ top: 0 }} // Allow dragging downwards
+                  dragElastic={0.2}
+                  onDrag={(_, info) => {
+                    y.set(info.offset.y); // Update the motion value 'y' during drag
+                  }}
+                  onDragEnd={(_, info) => {
+                    if (info.offset.y > 100) {
+                      closeBottomSheet();
+                    } else {
+                      y.set(0); // Snap back to 0 if not closed
+                    }
+                  }}
+                  style={{
+                    width: '48px',
+                    height: '6px',
+                    backgroundColor: '#D97757',
+                    borderRadius: '3px',
+                    margin: '0 auto 1.5rem',
+                    opacity: 0.3,
+                    cursor: 'grab' // Indicate it's draggable
+                  }}
+                ></motion.div>
 
                 <button
                   onClick={closeBottomSheet}
