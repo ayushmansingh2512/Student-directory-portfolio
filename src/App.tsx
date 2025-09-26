@@ -631,7 +631,7 @@ const App = () => {
                     if (info.offset.y > 100) {
                       closeBottomSheet();
                     } else {
-                      y.set(0, { type: "spring", damping: 30, stiffness: 300 }); // Animate back to 0
+                      y.set(0); // Snap back to 0 if not closed
                     }
                   }}
                   style={{
