@@ -3,6 +3,7 @@ import { useState } from 'react';
 import './App.css';  
 import img1 from './assets/Studentimages/1.png';
 import img3 from './assets/Studentimages/3.png';
+import img4 from './assets/Studentimages/4.png';
 import img5 from './assets/Studentimages/5.png';
 import img6 from './assets/Studentimages/6.png';
 import img7 from './assets/Studentimages/7.png';
@@ -58,6 +59,13 @@ const App = () => {
         rollNo: '003', 
         image: img3,
         portfolioLink: 'https://bhargwiraj.github.io/myresume/'
+      },
+        { 
+        id: 4, 
+        name: 'Bhavishya Raj Mishra ', 
+        rollNo: '004', 
+        image: img4,
+        portfolioLink: 'https://bhavishyamishra1210-a11y.github.io/bhavishyamishra.github.io/'
       },
   { 
         id: 5, 
