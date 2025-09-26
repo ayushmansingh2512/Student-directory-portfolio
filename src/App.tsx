@@ -15,6 +15,7 @@ import img17 from './assets/Studentimages/17.png';
 import img18 from './assets/Studentimages/18.png';
 import img19 from './assets/Studentimages/19.png';
 import img22 from './assets/Studentimages/22.png';
+import img23 from './assets/Studentimages/23.png';
 import img24 from './assets/Studentimages/24.png';
 import img25 from './assets/Studentimages/25.png';
 import img26 from './assets/Studentimages/26.png';
@@ -144,6 +145,13 @@ const App = () => {
         rollNo: '022', 
         image: img22,
         portfolioLink: 'https://dev981175.github.io/P2/'
+      },
+          { 
+        id: 23, 
+        name: 'Devansh Narvariya', 
+        rollNo: '023', 
+        image: img23,
+        portfolioLink: 'https://devanshnarvariya.github.io/devanshportfolio/'
       },
       { 
         id: 24, 
