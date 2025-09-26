@@ -226,7 +226,7 @@ const App = () => {
                   transition: 'all 0.3s ease'
                 }}
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
                 onFocus={(e) => {
                   e.target.style.borderColor = '#D97757';
                   e.target.style.boxShadow = '0 0 0 3px rgba(217, 119, 87, 0.1)';
@@ -350,7 +350,7 @@ const App = () => {
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "100%" }}
-                transition={{ type: "spring", damping: 30, stiffness: 300 }}
+                transition={{ type: "spring", damping: 40, stiffness: 200 }}
                 drag="y"
                 dragConstraints={{ top: 0, bottom: 0 }}
                 dragElastic={0.2}
@@ -369,229 +369,245 @@ const App = () => {
                   borderTopRightRadius: '24px',
                   padding: '1.5rem',
                   zIndex: 50,
-                  maxHeight: '80vh',
-                  overflowY: 'auto',
+                  maxHeight: '90vh',
+                  display: 'flex',
+                  flexDirection: 'column',
                   boxShadow: '0 -10px 30px rgba(0,0,0,0.1)'
                 }}
               >
-                {/* Drag Handle */}
+                {/* Header for drag handle and close button */}
                 <div style={{
-                  width: '48px',
-                  height: '6px',
-                  backgroundColor: '#D97757',
-                  borderRadius: '3px',
-                  margin: '0 auto 1.5rem',
-                  opacity: 0.3
-                }}></div>
-                
-                {/* Close Button */}
-                <button
-                  onClick={closeBottomSheet}
-                  style={{
-                    position: 'absolute',
-                    top: '16px',
-                    right: '16px',
-                    padding: '8px',
-                    borderRadius: '50%',
-                    backgroundColor: '#E3DACC',
-                    border: 'none',
-                    color: '#555',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-                  }}
-                  onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => e.target.style.backgroundColor = '#D97757'}
-                  onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => e.target.style.backgroundColor = '#E3DACC'}
-                >
-                  <X size={20} />
-                </button>
-                
-                {/* Student Info */}
-                <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                  <motion.div 
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
+                  position: 'relative',
+                  paddingBottom: '1.5rem',
+                  flexShrink: 0
+                }}>
+                  {/* Drag Handle */}
+                  <div style={{
+                    width: '48px',
+                    height: '6px',
+                    backgroundColor: '#D97757',
+                    borderRadius: '3px',
+                    margin: '0 auto 1.5rem',
+                    opacity: 0.3
+                  }}></div>
+                  
+                  {/* Close Button */}
+                  <button
+                    onClick={closeBottomSheet}
                     style={{
-                      width: '100px',
-                      height: '100px',
+                      position: 'absolute',
+                      top: '16px',
+                      right: '16px',
+                      padding: '8px',
                       borderRadius: '50%',
-                      overflow: 'hidden',
-                      margin: '0 auto 1rem',
-                      border: '4px solid #D97757',
-                      boxShadow: '0 4px 15px rgba(217, 119, 87, 0.2)'
+                      backgroundColor: '#E3DACC',
+                      border: 'none',
+                      color: '#555',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
                     }}
+                    onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => e.target.style.backgroundColor = '#D97757'}
+                    onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => e.target.style.backgroundColor = '#E3DACC'}
                   >
-                    <img 
-                      src={selectedStudent.image} 
-                      alt={selectedStudent.name}
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover'
-                      }}
-                    />
-                  </motion.div>
-                  <h2 style={{
-                    fontSize: '1.5rem',
-                    fontWeight: '600',
-                    color: '#222',
-                    marginBottom: '0.5rem'
-                  }}>
-                    {selectedStudent.name}
-                  </h2>
-                  <p style={{ color: '#717171', fontSize: '1rem' }}>
-                    Roll No: {selectedStudent.rollNo}
-                  </p>
+                    <X size={20} />
+                  </button>
                 </div>
 
-                {/* Contact Sections */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                  {/* Email Section */}
-                  <motion.div 
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.1 }}
-                    style={{
-                      backgroundColor: '#E3DACC',
-                      padding: '1.2rem',
-                      borderRadius: '16px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
-                    }}
-                  >
-                    <h3 style={{
-                      fontWeight: '600',
-                      color: '#222',
-                      marginBottom: '0.8rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem'
-                    }}>
-                      <Mail size={20} style={{ color: '#D97757' }} />
-                      Email
-                    </h3>
-                    <button
-                      onClick={() => window.open(`mailto:${selectedStudent.email}`)}
+                {/* Scrollable Content */}
+                <div style={{
+                  overflowY: 'auto',
+                  paddingTop: '0',
+                  paddingBottom: '1.5rem',
+                  flexGrow: 1
+                }}>
+                  {/* Student Info */}
+                  <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                    <motion.div 
+                      initial={{ scale: 0.8, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
                       style={{
-                        color: '#D97757',
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
-                        textDecoration: 'underline',
-                        fontSize: '1rem'
+                        width: '100px',
+                        height: '100px',
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        margin: '0 auto 1rem',
+                        border: '4px solid #D97757',
+                        boxShadow: '0 4px 15px rgba(217, 119, 87, 0.2)'
                       }}
                     >
-                      {selectedStudent.email}
-                    </button>
-                  </motion.div>
-
-                  {/* Portfolio Section */}
-                  <motion.div 
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    style={{
-                      backgroundColor: '#E3DACC',
-                      padding: '1.2rem',
-                      borderRadius: '16px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
-                    }}
-                  >
-                    <h3 style={{
+                      <img 
+                        src={selectedStudent.image} 
+                        alt={selectedStudent.name}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover'
+                        }}
+                      />
+                    </motion.div>
+                    <h2 style={{
+                      fontSize: '1.5rem',
                       fontWeight: '600',
                       color: '#222',
-                      marginBottom: '0.8rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '0.5rem'
+                      marginBottom: '0.5rem'
                     }}>
-                      <ExternalLink size={20} style={{ color: '#D97757' }} />
-                      Portfolio
-                    </h3>
-                    <button
-                      onClick={() => handleLinkClick(selectedStudent.portfolioLink)}
+                      {selectedStudent.name}
+                    </h2>
+                    <p style={{ color: '#717171', fontSize: '1rem' }}>
+                      Roll No: {selectedStudent.rollNo}
+                    </p>
+                  </div>
+
+                  {/* Contact Sections */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                    {/* Email Section */}
+                    <motion.div 
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.1 }}
                       style={{
-                        color: '#D97757',
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
-                        textDecoration: 'underline',
-                        wordBreak: 'break-all',
-                        fontSize: '0.9rem'
+                        backgroundColor: '#E3DACC',
+                        padding: '1.2rem',
+                        borderRadius: '16px',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
                       }}
                     >
-                      {selectedStudent.portfolioLink}
-                    </button>
-                  </motion.div>
+                      <h3 style={{
+                        fontWeight: '600',
+                        color: '#222',
+                        marginBottom: '0.8rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem'
+                      }}>
+                        <Mail size={20} style={{ color: '#D97757' }} />
+                        Email
+                      </h3>
+                      <button
+                        onClick={() => window.open(`mailto:${selectedStudent.email}`)}
+                        style={{
+                          color: '#D97757',
+                          backgroundColor: 'transparent',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textDecoration: 'underline',
+                          fontSize: '1rem'
+                        }}
+                      >
+                        {selectedStudent.email}
+                      </button>
+                    </motion.div>
 
-                  {/* Social Links */}
-                  <motion.div 
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                    style={{
-                      backgroundColor: '#E3DACC',
-                      padding: '1.2rem',
-                      borderRadius: '16px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
-                    }}
-                  >
-                    <h3 style={{
-                      fontWeight: '600',
-                      color: '#222',
-                      marginBottom: '1rem'
-                    }}>
-                      Social Links
-                    </h3>
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(2, 1fr)',
-                      gap: '0.75rem'
-                    }}>
-                      {[
-                        { icon: Github, name: 'GitHub', link: selectedStudent.github, color: '#333' },
-                        { icon: Linkedin, name: 'LinkedIn', link: selectedStudent.linkedin, color: '#0077b5' },
-                        { icon: Instagram, name: 'Instagram', link: selectedStudent.instagram, color: '#e4405f' },
-                        { icon: Code, name: 'LeetCode', link: selectedStudent.leetcode, color: '#f89f1b' }
-                      ].map(({ icon: Icon, name, link, color }) => (
-                        <motion.button
-                          key={name}
-                          onClick={() => handleLinkClick(link)}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            padding: '0.75rem',
-                            backgroundColor: '#F0EEE6',
-                            borderRadius: '12px',
-                            border: '1px solid rgba(217, 119, 87, 0.2)',
-                            cursor: 'pointer',
-                            color: '#222',
-                            gap: '0.5rem',
-                            transition: 'all 0.3s ease',
-                            boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
-                          }}
-                          onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
-                            const target = e.target as HTMLButtonElement;
-                            target.style.backgroundColor = '#D97757';
-                            target.style.color = 'white';
-                            target.style.transform = 'translateY(-2px)';
-                          }}
-                          onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
-                            const target = e.target as HTMLButtonElement;
-                            target.style.backgroundColor = '#F0EEE6';
-                            target.style.color = '#222';
-                            target.style.transform = 'translateY(0)';
-                          }}
-                        >
-                          <Icon size={18} style={{ color }} />
-                          <span style={{ fontWeight: '500', fontSize: '0.9rem' }}>{name}</span>
-                        </motion.button>
-                      ))}
-                    </div>
-                  </motion.div>
+                    {/* Portfolio Section */}
+                    <motion.div 
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.2 }}
+                      style={{
+                        backgroundColor: '#E3DACC',
+                        padding: '1.2rem',
+                        borderRadius: '16px',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                      }}
+                    >
+                      <h3 style={{
+                        fontWeight: '600',
+                        color: '#222',
+                        marginBottom: '0.8rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem'
+                      }}>
+                        <ExternalLink size={20} style={{ color: '#D97757' }} />
+                        Portfolio
+                      </h3>
+                      <button
+                        onClick={() => handleLinkClick(selectedStudent.portfolioLink)}
+                        style={{
+                          color: '#D97757',
+                          backgroundColor: 'transparent',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textDecoration: 'underline',
+                          wordBreak: 'break-all',
+                          fontSize: '0.9rem'
+                        }}
+                      >
+                        {selectedStudent.portfolioLink}
+                      </button>
+                    </motion.div>
+
+                    {/* Social Links */}
+                    <motion.div 
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.3 }}
+                      style={{
+                        backgroundColor: '#E3DACC',
+                        padding: '1.2rem',
+                        borderRadius: '16px',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                      }}
+                    >
+                      <h3 style={{
+                        fontWeight: '600',
+                        color: '#222',
+                        marginBottom: '1rem'
+                      }}>
+                        Social Links
+                      </h3>
+                      <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(2, 1fr)',
+                        gap: '0.75rem'
+                      }}>
+                        {[
+                          { icon: Github, name: 'GitHub', link: selectedStudent.github, color: '#333' },
+                          { icon: Linkedin, name: 'LinkedIn', link: selectedStudent.linkedin, color: '#0077b5' },
+                          { icon: Instagram, name: 'Instagram', link: selectedStudent.instagram, color: '#e4405f' },
+                          { icon: Code, name: 'LeetCode', link: selectedStudent.leetcode, color: '#f89f1b' }
+                        ].map(({ icon: Icon, name, link, color }) => (
+                          <motion.button
+                            key={name}
+                            onClick={() => handleLinkClick(link)}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            style={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              padding: '0.75rem',
+                              backgroundColor: '#F0EEE6',
+                              borderRadius: '12px',
+                              border: '1px solid rgba(217, 119, 87, 0.2)',
+                              cursor: 'pointer',
+                              color: '#222',
+                              gap: '0.5rem',
+                              transition: 'all 0.3s ease',
+                              boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                            }}
+                            onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
+                              const target = e.target as HTMLButtonElement;
+                              target.style.backgroundColor = '#D97757';
+                              target.style.color = 'white';
+                              target.style.transform = 'translateY(-2px)';
+                            }}
+                            onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
+                              const target = e.target as HTMLButtonElement;
+                              target.style.backgroundColor = '#F0EEE6';
+                              target.style.color = '#222';
+                              target.style.transform = 'translateY(0)';
+                            }}
+                          >
+                            <Icon size={18} style={{ color }} />
+                            <span style={{ fontWeight: '500', fontSize: '0.9rem' }}>{name}</span>
+                          </motion.button>
+                        ))}
+                      </div>
+                    </motion.div>
+                  </div>
                 </div>
               </motion.div>
             </>
@@ -602,29 +618,4 @@ const App = () => {
   );
 };
 
-export default App;The TypeScript errors are occurring because of missing type definitions. Let me fix these by adding proper TypeScript types to the component.
-
-Student Portfolio with Framer Motion Bottom Sheet
-Interactive artifact ∙ Version 4 
-Perfect! I've fixed all the TypeScript errors by adding proper type definitions. Here are the changes I made:
-
-Fixed TypeScript Issues:
-Added Interface Definitions:
-Student interface with all required properties
-SiteData interface for the site configuration
-Added Type Annotations:
-useState<string>('') for searchTerm
-useState<Student | null>(null) for selectedStudent
-useState<boolean>(false) for isBottomSheetOpen
-siteData: SiteData for the data object
-Function Parameter Types:
-handleCardClick(student: Student, e: React.MouseEvent)
-handleLinkClick(url: string)
-Event handlers with proper React event types
-Event Handler Types:
-React.FocusEvent<HTMLInputElement> for focus/blur events
-React.MouseEvent<HTMLButtonElement> for button events
-Proper type casting with as HTMLButtonElement
-The component now has full TypeScript support and should build without any errors on Vercel. All the functionality remains exactly the same - just with proper type safety!
-
-
+export default App;
