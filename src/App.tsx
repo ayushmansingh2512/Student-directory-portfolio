@@ -22,6 +22,7 @@ import img28 from './assets/Studentimages/28.png';
 import img32 from './assets/Studentimages/32.png';
 import img33 from './assets/Studentimages/33.png';
 import img34 from './assets/Studentimages/34.png';
+import img35 from './assets/Studentimages/35.png';
 import img40 from './assets/Studentimages/40.png';
 import img41 from './assets/Studentimages/41.png';
 import img43 from './assets/Studentimages/43.png';
@@ -191,6 +192,13 @@ const App = () => {
         image: img34,
         portfolioLink: 'https://04-gaurav.github.io/My_Portfolio/'
       },
+         { 
+        id: 35, 
+        name: 'Gaurav Gupta', 
+        rollNo: '035', 
+        image: img35,
+        portfolioLink: 'https://gauravgupta2005.github.io/portfolio/'
+      },
       { 
         id: 40, 
         name: 'Harsh Tiwari', 
@@ -261,6 +269,13 @@ const App = () => {
         rollNo: '056', 
         image: img56,
         portfolioLink: 'https://kt-personal-portfolio.netlify.app/ '
+      },
+        { 
+        id: 59, 
+        name: 'Karmik Tyagi', 
+        rollNo: '059', 
+        image: img59,
+        portfolioLink: 'https://karmiktyagi.github.io/p2/'
       },
       
       
