@@ -19,8 +19,12 @@ import img32 from './assets/Studentimages/32.png';
 import img33 from './assets/Studentimages/33.png';
 import img34 from './assets/Studentimages/34.png';
 import img40 from './assets/Studentimages/40.png';
+import img41 from './assets/Studentimages/41.png';
 import img43 from './assets/Studentimages/43.png';
+import img44 from './assets/Studentimages/44.png';
 import img46 from './assets/Studentimages/46.png';
+import img51 from './assets/Studentimages/51.png';
+import img52 from './assets/Studentimages/52.png';
 import img55 from './assets/Studentimages/55.png';
 import img56 from './assets/Studentimages/56.png';
 
@@ -162,7 +166,13 @@ const App = () => {
         image: img40,
         portfolioLink: 'https://harshdev4.github.io/harsh/'
       },
-
+  { 
+        id: 41, 
+        name: 'Harsh Verma', 
+        rollNo: '041', 
+        image: img41,
+        portfolioLink: 'https://verma0104.github.io/P01/'
+      },
       { 
         id: 43, 
         name: 'Hemank Kumar', 
@@ -170,12 +180,33 @@ const App = () => {
         image: img43,
         portfolioLink: 'https://hemank-kumar.netlify.app/'
       },
+           { 
+        id: 44, 
+        name: 'Hemant Singh', 
+        rollNo: '044', 
+        image: img44,
+        portfolioLink: 'https://hemantsingh-hs.github.io/portfolio/'
+      },
       { 
         id: 46, 
         name: 'Himanshu Srivastav', 
         rollNo: '046', 
         image: img46,
         portfolioLink: 'https://himanshu-770.github.io/portfolio/'
+      },
+       { 
+        id: 51, 
+        name: 'Jatin Kumar', 
+        rollNo: '051', 
+        image: img51,
+        portfolioLink: 'https://techwithjatin.github.io/my_portfolio.io/'
+      },
+        { 
+        id: 52, 
+        name: 'Kajal', 
+        rollNo: '052', 
+        image: img52,
+        portfolioLink: 'https://kajalnagar.github.io/KAJAL-PORTFOLIOO/'
       },
       { 
         id: 55, 
