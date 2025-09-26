@@ -2,6 +2,26 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Mail, ExternalLink, Github, Linkedin, Instagram, Code } from 'lucide-react';
 
+// TypeScript interfaces
+interface Student {
+  id: number;
+  name: string;
+  rollNo: string;
+  image: string;
+  portfolioLink: string;
+  email: string;
+  github: string;
+  linkedin: string;
+  instagram: string;
+  leetcode: string;
+}
+
+interface SiteData {
+  title: string;
+  para: string;
+  students: Student[];
+}
+
 // Mock images - replace with your actual imports
 const img1 = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face';
 const img3 = 'https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=400&h=500&fit=crop&crop=face';
@@ -13,12 +33,12 @@ const img9 = 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400
 const img10 = 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=500&fit=crop&crop=face';
 
 const App = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedStudent, setSelectedStudent] = useState(null);
-  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+  const [isBottomSheetOpen, setIsBottomSheetOpen] = useState<boolean>(false);
 
   // Site data array with additional contact info
-  const siteData = {
+  const siteData: SiteData = {
     title: 'Student Portfolio Directory',
     para: 'Kiet MCA Section-B',
     students: [
@@ -126,7 +146,7 @@ const App = () => {
     student.rollNo.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleCardClick = (student, e) => {
+  const handleCardClick = (student: Student, e: React.MouseEvent) => {
     e.preventDefault();
     setSelectedStudent(student);
     setIsBottomSheetOpen(true);
@@ -137,7 +157,7 @@ const App = () => {
     setTimeout(() => setSelectedStudent(null), 300);
   };
 
-  const handleLinkClick = (url) => {
+  const handleLinkClick = (url: string) => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
@@ -240,7 +260,7 @@ const App = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -2 }}
-                  onClick={(e) => handleCardClick(student, e)}
+                  onClick={(e: React.MouseEvent) => handleCardClick(student, e)}
                   style={{
                     overflow: 'hidden',
                     textDecoration: 'none',
@@ -382,8 +402,8 @@ const App = () => {
                     justifyContent: 'center',
                     boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
                   }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = '#D97757'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = '#E3DACC'}
+                  onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => e.target.style.backgroundColor = '#D97757'}
+                  onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => e.target.style.backgroundColor = '#E3DACC'}
                 >
                   <X size={20} />
                 </button>
@@ -553,15 +573,17 @@ const App = () => {
                             transition: 'all 0.3s ease',
                             boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
                           }}
-                          onMouseEnter={(e) => {
-                            e.target.style.backgroundColor = '#D97757';
-                            e.target.style.color = 'white';
-                            e.target.style.transform = 'translateY(-2px)';
+                          onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            const target = e.target as HTMLButtonElement;
+                            target.style.backgroundColor = '#D97757';
+                            target.style.color = 'white';
+                            target.style.transform = 'translateY(-2px)';
                           }}
-                          onMouseLeave={(e) => {
-                            e.target.style.backgroundColor = '#F0EEE6';
-                            e.target.style.color = '#222';
-                            e.target.style.transform = 'translateY(0)';
+                          onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
+                            const target = e.target as HTMLButtonElement;
+                            target.style.backgroundColor = '#F0EEE6';
+                            target.style.color = '#222';
+                            target.style.transform = 'translateY(0)';
                           }}
                         >
                           <Icon size={18} style={{ color }} />
@@ -579,6 +601,5 @@ const App = () => {
     </>
   );
 };
-
 
 export default App;
