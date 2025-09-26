@@ -122,7 +122,7 @@ const App = () => {
         name: 'Deepanshi Mishra', 
         rollNo: '017', 
         image: img17,
-        portfolioLink: 'https://portfolio-i5xq-2l3nwry2b-deepanshi8006s-projects.vercel.app/ '
+        portfolioLink: 'https://portfolio-i5xq-pkxk701et-deepanshi8006s-projects.vercel.app/'
       },
       { 
         id: 18, 
