@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useAnimation } from 'framer-motion';
 import { X, Mail, ExternalLink, Github, Linkedin, Instagram, Code } from 'lucide-react';
 
 // TypeScript interfaces
@@ -24,7 +24,7 @@ interface SiteData {
 
 // Mock images - replace with your actual imports
 const img1 = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=face';
-const img3 = 'https://images.unsplash.com/photo-1494790108755-2616b612b5bc?w=400&h=500&fit=crop&crop=face';
+const img3 = 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop&crop=face';
 const img4 = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=500&fit=crop&crop=face';
 const img5 = 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=500&fit=crop&crop=face';
 const img6 = 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=500&fit=crop&crop=face';
@@ -36,6 +36,7 @@ const App = () => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState<boolean>(false);
+  const controls = useAnimation();
 
   // Site data array with additional contact info
   const siteData: SiteData = {
@@ -150,11 +151,15 @@ const App = () => {
     e.preventDefault();
     setSelectedStudent(student);
     setIsBottomSheetOpen(true);
+    controls.start({ y: 0 });
   };
 
   const closeBottomSheet = () => {
-    setIsBottomSheetOpen(false);
-    setTimeout(() => setSelectedStudent(null), 300);
+    controls.start({ y: "100%" });
+    setTimeout(() => {
+        setIsBottomSheetOpen(false);
+        setSelectedStudent(null);
+    }, 300);
   };
 
   const handleLinkClick = (url: string) => {
@@ -173,6 +178,17 @@ const App = () => {
         body {
           background-color: #F0EEE6;
           font-family: 'Satoshi', sans-serif;
+        }
+        .scrollbar-custom::-webkit-scrollbar {
+            width: 8px;
+        }
+        .scrollbar-custom::-webkit-scrollbar-track {
+            background: #E3DACC;
+        }
+        .scrollbar-custom::-webkit-scrollbar-thumb {
+            background-color: #D97757;
+            border-radius: 10px;
+            border: 2px solid #E3DACC;
         }
       `}</style>
 
@@ -348,7 +364,7 @@ const App = () => {
               {/* Bottom Sheet */}
               <motion.div
                 initial={{ y: "100%" }}
-                animate={{ y: 0 }}
+                animate={controls}
                 exit={{ y: "100%" }}
                 transition={{ type: "spring", damping: 40, stiffness: 200 }}
                 drag="y"
@@ -357,6 +373,8 @@ const App = () => {
                 onDragEnd={(_, info) => {
                   if (info.offset.y > 100) {
                     closeBottomSheet();
+                  } else {
+                    controls.start({ y: 0 });
                   }
                 }}
                 style={{
@@ -422,7 +440,9 @@ const App = () => {
                   paddingTop: '0',
                   paddingBottom: '1.5rem',
                   flexGrow: 1
-                }}>
+                }}
+                className="scrollbar-custom"
+                >
                   {/* Student Info */}
                   <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                     <motion.div 
