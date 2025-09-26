@@ -10,6 +10,7 @@ import img9 from './assets/Studentimages/9.png';
 import img10 from './assets/Studentimages/10.png';
 import img14 from './assets/Studentimages/14.png';
 import img15 from './assets/Studentimages/15.png';
+import img17 from './assets/Studentimages/17.png';
 import img18 from './assets/Studentimages/18.png';
 import img19 from './assets/Studentimages/19.png';
 import img22 from './assets/Studentimages/22.png';
@@ -105,6 +106,13 @@ const App = () => {
         rollNo: '015', 
         image: img15,
         portfolioLink: 'https://deepaktyagi2002.github.io/p1/'
+      },
+           { 
+        id: 15, 
+        name: 'Deepanshi Mishra', 
+        rollNo: '017', 
+        image: img17,
+        portfolioLink: 'https://portfolio-i5xq-2l3nwry2b-deepanshi8006s-projects.vercel.app/ '
       },
       { 
         id: 18, 
