@@ -500,7 +500,7 @@ const App = () => {
       },
       
       
-    ]
+    ] as Student[]
   };
 
   const filteredStudents = siteData.students.filter(student =>
@@ -535,7 +535,7 @@ const App = () => {
               placeholder="Search by name or roll number..."
               className="search-input"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
             />
           </div>
         </div>
