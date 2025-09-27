@@ -522,7 +522,6 @@ const App = () => {
   const handleLinkClick = (url: string): void => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
-
   return (
     <div className="app">
       <motion.header className="header">
@@ -543,35 +542,35 @@ const App = () => {
 
       <main className="main">
         <div className="container">
-        <div className="cards-grid">
+          <div className="cards-grid">
             {filteredStudents.map((student, index) => (
-                <motion.div
-                  key={student.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -2 }}
-                  onClick={(e) => handleCardClick(student, e)}
-                  className="card"
-                >
-                  <div className="card-image">
-                    <motion.img
-                      src={student.image}
-                      alt={student.name}
-                      whileHover={{ scale: 1.05 }}
-                    />
-                  </div>
-                  <div className="card-content">
-                    <motion.h3
-                      className="card-name"
-                      whileHover={{ color: '#D97757' }}
-                    >
-                      {student.name}
-                    </motion.h3>
-                    <p className="card-roll">Roll No: {student.rollNo}</p>
-                  </div>
-                </motion.div>
-              ))}
+              <motion.div
+                key={student.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -2 }}
+                onClick={(e) => handleCardClick(student, e)}
+                className="card"
+              >
+                <div className="card-image">
+                  <motion.img
+                    src={student.image}
+                    alt={student.name}
+                    whileHover={{ scale: 1.05 }}
+                  />
+                </div>
+                <div className="card-content">
+                  <motion.h3
+                    className="card-name"
+                    whileHover={{ color: '#D97757' }}
+                  >
+                    {student.name}
+                  </motion.h3>
+                  <p className="card-roll">Roll No: {student.rollNo}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
 
           {filteredStudents.length === 0 && (
@@ -580,7 +579,8 @@ const App = () => {
             </div>
           )}
         </div>
-      <AnimatePresence>
+
+        <AnimatePresence>
           {isBottomSheetOpen && selectedStudent && (
             <>
               <motion.div
@@ -603,12 +603,12 @@ const App = () => {
                 exit={{ y: '100%' }}
                 transition={{ type: 'spring', damping: 50, stiffness: 200 }}
                 drag="y"
-                dragConstraints={{ top: 0 }} // Prevent upward drag, allow downward
-                dragElastic={0.1} // Tighter drag feel
-                dragMomentum={false} // Disable momentum
+                dragConstraints={{ top: 0, bottom: 0 }}
+                dragElastic={{ top: 0, bottom: 0.2 }}
+                dragMomentum={false}
                 dragControls={controls}
                 onDragEnd={(_, info) => {
-                  if (info.offset.y > 100) { // Close if dragged down more than 100px
+                  if (info.offset.y > 150) {
                     closeBottomSheet();
                   }
                 }}
@@ -620,20 +620,24 @@ const App = () => {
                   backgroundColor: '#F0EEE6',
                   borderTopLeftRadius: '24px',
                   borderTopRightRadius: '24px',
-                  padding: '1.5rem',
                   zIndex: 50,
-                  maxHeight: '80vh',
-                  overflowY: 'auto', // Allow scrolling inside
+                  height: '85vh',
+                  maxHeight: '85vh',
+                  display: 'flex',
+                  flexDirection: 'column',
                   boxShadow: '0 -10px 30px rgba(0,0,0,0.1)',
                 }}
               >
+                {/* Header with drag handle - Fixed */}
                 <div
-                  id="bottom-sheet-drag-handle"
-                  onPointerDown={(e) => controls.start(e)} // Start drag only on handle
+                  onPointerDown={(e) => controls.start(e)}
                   style={{
                     cursor: 'grab',
-                    paddingBottom: '1.5rem',
-                    marginBottom: '0.5rem',
+                    padding: '1rem 1.5rem 0.5rem',
+                    flexShrink: 0,
+                    backgroundColor: '#F0EEE6',
+                    borderTopLeftRadius: '24px',
+                    borderTopRightRadius: '24px',
                   }}
                 >
                   <div
@@ -647,7 +651,7 @@ const App = () => {
                     }}
                   ></div>
 
-                  <div style={{ textAlign: 'center' }}>
+                  <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
                     <h2
                       style={{
                         fontSize: '1.5rem',
@@ -664,6 +668,7 @@ const App = () => {
                   </div>
                 </div>
 
+                {/* Close button */}
                 <button
                   onClick={closeBottomSheet}
                   style={{
@@ -680,143 +685,183 @@ const App = () => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                    zIndex: 10,
                   }}
                 >
                   <X size={20} />
                 </button>
 
+                {/* Scrollable content */}
                 <div
                   style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '1.5rem',
-                    paddingBottom: '2rem', // Extra padding to ensure scrollable content is accessible
+                    flex: 1,
+                    overflowY: 'auto',
+                    padding: '0 1.5rem 2rem',
+                    WebkitOverflowScrolling: 'touch',
                   }}
                 >
-                  {/* Email Section */}
-                  <motion.div
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.1 }}
+                  <div
                     style={{
-                      backgroundColor: '#E3DACC',
-                      padding: '1.2rem',
-                      borderRadius: '16px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '1.5rem',
+                      paddingBottom: '2rem',
                     }}
                   >
-                    <h3
+                    {/* Profile Image */}
+                    <motion.div
+                      initial={{ scale: 0.9, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ delay: 0.1 }}
                       style={{
-                        fontWeight: '600',
-                        color: '#222',
-                        marginBottom: '0.8rem',
                         display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem',
+                        justifyContent: 'center',
+                        marginBottom: '1rem'
                       }}
                     >
-                      <Mail size={20} style={{ color: '#D97757' }} />
-                      Email
-                    </h3>
-                    <button
-                      onClick={() => window.open(`mailto:${selectedStudent.email}`)}
-                      style={{
-                        color: '#D97757',
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
-                        textDecoration: 'underline',
-                        fontSize: '1rem',
-                      }}
-                    >
-                      {selectedStudent.email}
-                    </button>
-                  </motion.div>
+                      <div style={{
+                        width: '100px',
+                        height: '100px',
+                        borderRadius: '50%',
+                        overflow: 'hidden',
+                        border: '4px solid #D97757',
+                        boxShadow: '0 4px 12px rgba(217, 119, 87, 0.2)'
+                      }}>
+                        <img
+                          src={selectedStudent.image}
+                          alt={selectedStudent.name}
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                      </div>
+                    </motion.div>
 
-                  {/* Portfolio Section */}
-                  <motion.div
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    style={{
-                      backgroundColor: '#E3DACC',
-                      padding: '1.2rem',
-                      borderRadius: '16px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                    }}
-                  >
-                    <h3
+                    {/* Email Section */}
+                    <motion.div
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.2 }}
                       style={{
-                        fontWeight: '600',
-                        color: '#222',
-                        marginBottom: '0.8rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem',
+                        backgroundColor: '#E3DACC',
+                        padding: '1.5rem',
+                        borderRadius: '16px',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                       }}
                     >
-                      <ExternalLink size={20} style={{ color: '#D97757' }} />
-                      Portfolio
-                    </h3>
-                    <button
-                      onClick={() => handleLinkClick(selectedStudent.portfolioLink)}
-                      style={{
-                        color: '#D97757',
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                        cursor: 'pointer',
-                        textDecoration: 'underline',
-                        wordBreak: 'break-all',
-                        fontSize: '0.9rem',
-                      }}
-                    >
-                      {selectedStudent.portfolioLink}
-                    </button>
-                  </motion.div>
+                      <h3
+                        style={{
+                          fontWeight: '600',
+                          color: '#222',
+                          marginBottom: '1rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.5rem',
+                          fontSize: '1.1rem'
+                        }}
+                      >
+                        <Mail size={20} style={{ color: '#D97757' }} />
+                        Email
+                      </h3>
+                      <button
+                        onClick={() => window.open(`mailto:${selectedStudent.email}`)}
+                        style={{
+                          color: '#D97757',
+                          backgroundColor: 'transparent',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textDecoration: 'underline',
+                          fontSize: '1rem',
+                          wordBreak: 'break-all',
+                          textAlign: 'left',
+                          padding: 0
+                        }}
+                      >
+                        {selectedStudent.email}
+                      </button>
+                    </motion.div>
 
-                  {/* Social Links */}
-                  <motion.div
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                    style={{
-                      backgroundColor: '#E3DACC',
-                      padding: '1.2rem',
-                      borderRadius: '16px',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                    }}
-                  >
-                    <h3
+                    {/* Portfolio Section */}
+                    <motion.div
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.3 }}
                       style={{
-                        fontWeight: '600',
-                        color: '#222',
-                        marginBottom: '1rem',
+                        backgroundColor: '#E3DACC',
+                        padding: '1.5rem',
+                        borderRadius: '16px',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
                       }}
                     >
-                      Social Links
-                    </h3>
-                    <div
+                      <h3
+                        style={{
+                          fontWeight: '600',
+                          color: '#222',
+                          marginBottom: '1rem',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.5rem',
+                          fontSize: '1.1rem'
+                        }}
+                      >
+                        <ExternalLink size={20} style={{ color: '#D97757' }} />
+                        Portfolio
+                      </h3>
+                      <button
+                        onClick={() => handleLinkClick(selectedStudent.portfolioLink)}
+                        style={{
+                          color: '#D97757',
+                          backgroundColor: 'transparent',
+                          border: 'none',
+                          cursor: 'pointer',
+                          textDecoration: 'underline',
+                          wordBreak: 'break-all',
+                          fontSize: '0.9rem',
+                          textAlign: 'left',
+                          padding: 0
+                        }}
+                      >
+                        {selectedStudent.portfolioLink}
+                      </button>
+                    </motion.div>
+
+                    {/* Social Links */}
+                    <motion.div
+                      initial={{ x: -20, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{ delay: 0.4 }}
                       style={{
+                        backgroundColor: '#E3DACC',
+                        padding: '1.5rem',
+                        borderRadius: '16px',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                      }}
+                    >
+                      <h3
+                        style={{
+                          fontWeight: '600',
+                          color: '#222',
+                          marginBottom: '1.5rem',
+                          fontSize: '1.1rem'
+                        }}
+                      >
+                        Social Links
+                      </h3>
+                      
+                      {/* First Row: GitHub and LinkedIn */}
+                      <div style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(2, 1fr)',
-                        gap: '0.75rem',
-                      }}
-                    >
-                      {[
-                        { icon: Github, name: 'GitHub', link: selectedStudent.github, color: '#333' },
-                        { icon: Linkedin, name: 'LinkedIn', link: selectedStudent.linkedin, color: '#0077b5' },
-                        { icon: Instagram, name: 'Instagram', link: selectedStudent.instagram, color: '#e4405f' },
-                        { icon: Code, name: 'LeetCode', link: selectedStudent.leetcode, color: '#f89f1b' },
-                      ].map(({ icon: Icon, name, link, color }) => (
+                        gridTemplateColumns: '1fr 1fr',
+                        gap: '1rem',
+                        marginBottom: '1rem'
+                      }}>
                         <motion.button
-                          key={name}
-                          onClick={() => handleLinkClick(link)}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
+                          onClick={() => handleLinkClick(selectedStudent.github)}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
                           style={{
                             display: 'flex',
                             alignItems: 'center',
-                            padding: '0.75rem',
+                            justifyContent: 'center',
+                            padding: '1rem',
                             backgroundColor: '#F0EEE6',
                             borderRadius: '12px',
                             border: '1px solid rgba(217, 119, 87, 0.2)',
@@ -825,14 +870,101 @@ const App = () => {
                             gap: '0.5rem',
                             transition: 'all 0.3s ease',
                             boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+                            fontSize: '1rem',
+                            fontWeight: '500'
                           }}
                         >
-                          <Icon size={18} style={{ color }} />
-                          <span style={{ fontWeight: '500', fontSize: '0.9rem' }}>{name}</span>
+                          <Github size={20} style={{ color: '#333' }} />
+                          <span>GitHub</span>
                         </motion.button>
-                      ))}
-                    </div>
-                  </motion.div>
+
+                        <motion.button
+                          onClick={() => handleLinkClick(selectedStudent.linkedin)}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '1rem',
+                            backgroundColor: '#F0EEE6',
+                            borderRadius: '12px',
+                            border: '1px solid rgba(217, 119, 87, 0.2)',
+                            cursor: 'pointer',
+                            color: '#222',
+                            gap: '0.5rem',
+                            transition: 'all 0.3s ease',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+                            fontSize: '1rem',
+                            fontWeight: '500'
+                          }}
+                        >
+                          <Linkedin size={20} style={{ color: '#0077b5' }} />
+                          <span>LinkedIn</span>
+                        </motion.button>
+                      </div>
+
+                      {/* Second Row: Instagram and LeetCode */}
+                      <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr',
+                        gap: '1rem'
+                      }}>
+                        <motion.button
+                          onClick={() => handleLinkClick(selectedStudent.instagram)}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '1rem',
+                            backgroundColor: '#F0EEE6',
+                            borderRadius: '12px',
+                            border: '1px solid rgba(217, 119, 87, 0.2)',
+                            cursor: 'pointer',
+                            color: '#222',
+                            gap: '0.5rem',
+                            transition: 'all 0.3s ease',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+                            fontSize: '1rem',
+                            fontWeight: '500'
+                          }}
+                        >
+                          <Instagram size={20} style={{ color: '#e4405f' }} />
+                          <span>Instagram</span>
+                        </motion.button>
+
+                        <motion.button
+                          onClick={() => handleLinkClick(selectedStudent.leetcode)}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '1rem',
+                            backgroundColor: '#F0EEE6',
+                            borderRadius: '12px',
+                            border: '1px solid rgba(217, 119, 87, 0.2)',
+                            cursor: 'pointer',
+                            color: '#222',
+                            gap: '0.5rem',
+                            transition: 'all 0.3s ease',
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+                            fontSize: '1rem',
+                            fontWeight: '500'
+                          }}
+                        >
+                          <Code size={20} style={{ color: '#f89f1b' }} />
+                          <span>LeetCode</span>
+                        </motion.button>
+                      </div>
+                    </motion.div>
+
+                    {/* Extra space for better scrolling */}
+                    <div style={{ height: '2rem' }} />
+                  </div>
                 </div>
               </motion.div>
             </>
