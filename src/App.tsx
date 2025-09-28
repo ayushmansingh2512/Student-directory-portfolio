@@ -398,7 +398,7 @@ const App = () => {
         rollNo: '043',
         image: img43,
         portfolioLink: 'https://hemank-kumar.netlify.app/',
-        email: 'hemank@example.com',
+        email: 'hemank.fsu@gmail.com',
         github: 'https://github.com/hemank',
         linkedin: 'https://linkedin.com/in/hemank',
         instagram: 'https://instagram.com/hemank',
