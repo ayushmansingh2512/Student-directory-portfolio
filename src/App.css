@@ -3,11 +3,14 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
-  background-color: #F0EEE6;
+
+body {
+  background-color: var(--background-light);
 }
 
- 
+[data-theme='dark'] body {
+  background-color: var(--background-dark);
+}
 
 .app {
   min-height: 100vh;
@@ -15,18 +18,22 @@ body{
 
 /* Header Styles */
 .header {
-background:#E3DACC;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
- display: flex;
- gap: 100px;
- 
-     padding: 1rem 0;
-} 
- /* When card is hovered, change card name color */
+  background: var(--header-bg-light);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 100px;
+  padding: 1rem 0;
+}
+
+[data-theme='dark'] .header {
+  background: var(--header-bg-dark);
+}
+
+/* When card is hovered, change card name color */
 .card:hover .card-name {
-  color: #D97757; /* Airbnb red-pink */
+  color: var(--primary-color);
   cursor: pointer;
-  transition: color 0.3s ease; /* smooth effect */
+  transition: color 0.3s ease;
 }
 
 .container {
@@ -39,8 +46,7 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 .logo {
   font-size: 2rem;
   font-weight: bold;
-  color: #D97757;
- 
+  color: var(--primary-color);
   text-align: center;
 }
 
@@ -54,16 +60,22 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   width: 100%;
   max-width: 400px;
   padding: 12px 20px;
-  border: 2px solid #e1e5e9;
+  border: 2px solid var(--search-border-light);
   border-radius: 25px;
   font-size: 16px;
   transition: all 0.3s ease;
   outline: none;
 }
 
+[data-theme='dark'] .search-input {
+  border-color: var(--search-border-dark);
+  background-color: var(--card-bg-dark);
+  color: var(--text-dark);
+}
+
 .search-input:focus {
-  border-color: #D97757;
-  box-shadow: 0 0 0 3px rgba(255, 90, 95, 0.1);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(217, 119, 87, 0.1);
 }
 
 /* Main Content */
@@ -81,16 +93,17 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 
 /* Card Styles */
 .card {
- 
- 
   overflow: hidden;
- 
- 
   text-decoration: none;
   color: inherit;
   display: block;
+  background-color: transparent;
+  border-radius: 24px;
 }
- 
+
+[data-theme='dark'] .card {
+  background-color:  transparent;
+}
 
 .card-image {
   width: 90%;
@@ -112,21 +125,28 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .card-content {
-  padding: 1rem  0;
+  padding: 1rem 0;
 }
 
 .card-name {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.2rem;
-  color: #222;
+  color: var(--card-name-light);
+}
+
+[data-theme='dark'] .card-name {
+  color: var(--card-name-dark);
 }
 
 .card-roll {
-  color: #717171;
+  color: var(--card-roll-light);
   font-size: 0.9rem;
   font-weight: 400;
+}
 
+[data-theme='dark'] .card-roll {
+  color: var(--card-roll-dark);
 }
 
 /* No Results */
@@ -146,25 +166,22 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
     padding: 0 1rem;
     background-color: transparent;
   }
-  
+
   .cards-grid {
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 20px;
-    background-color:  ;
   }
-  
+
   .logo {
     font-size: 1.5rem;
   }
-  
+
   .search-input {
     max-width: 300px;
     padding: 10px 16px;
     font-size: 14px;
   }
 }
- 
-
 
 .para {
   text-align: center;
@@ -173,12 +190,19 @@ box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   margin-bottom: 1rem;
   font-weight: 800;
 }
- 
+
 @media (max-width: 768px) {
   .card-image {
-    width: 100%;     
-    height: auto;       
-    aspect-ratio: 3/4; 
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
   }
+}
+
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-color);
 }
 

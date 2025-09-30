@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, useDragControls } from 'framer-motion';
-import { X, Mail, ExternalLink, Github, Linkedin, Instagram, Code } from 'lucide-react';
+import { X, Mail, ExternalLink, Github, Linkedin, Instagram, Code, Sun, Moon } from 'lucide-react';
 import './App.css';
+import './new.css';
+import { useTheme } from './useTheme';
 import img1 from './assets/Studentimages/1.png';
 import img3 from './assets/Studentimages/3.png';
 import img4 from './assets/Studentimages/4.png';
@@ -59,6 +61,7 @@ interface SiteData {
 }
 
 const App = () => {
+  const { theme, toggleTheme } = useTheme();
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
   const [isBottomSheetOpen, setIsBottomSheetOpen] = useState<boolean>(false);
@@ -523,10 +526,15 @@ const App = () => {
     window.open(url, '_blank', 'noopener,noreferrer');
   };
   return (
-    <div className="app">
+    <div className={`app ${theme}`}>
       <motion.header className="header">
         <div className="container">
-          <h1 className="logo">{siteData.title}</h1>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <h1 className="logo">{siteData.title}</h1>
+            <button onClick={toggleTheme} className="theme-toggle-btn">
+              {theme === 'light' ? <Moon /> : <Sun />}
+            </button>
+          </div>
           <p className="para">{siteData.para}</p>
           <div className="search-container">
             <input
@@ -563,7 +571,7 @@ const App = () => {
                 <div className="card-content">
                   <motion.h3
                     className="card-name"
-                    whileHover={{ color: '#D97757' }}
+                    whileHover={{ color: 'var(--primary-color)' }}
                   >
                     {student.name}
                   </motion.h3>
@@ -617,7 +625,7 @@ const App = () => {
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  backgroundColor: '#F0EEE6',
+                  backgroundColor: theme === 'light' ? 'var(--bottom-sheet-bg-light)' : 'var(--bottom-sheet-bg-dark)',
                   borderTopLeftRadius: '24px',
                   borderTopRightRadius: '24px',
                   zIndex: 50,
@@ -635,7 +643,7 @@ const App = () => {
                     cursor: 'grab',
                     padding: '1rem 1.5rem 0.5rem',
                     flexShrink: 0,
-                    backgroundColor: '#F0EEE6',
+                    backgroundColor: theme === 'light' ? 'var(--bottom-sheet-header-bg-light)' : 'var(--bottom-sheet-header-bg-dark)',
                     borderTopLeftRadius: '24px',
                     borderTopRightRadius: '24px',
                   }}
@@ -644,7 +652,7 @@ const App = () => {
                     style={{
                       width: '48px',
                       height: '6px',
-                      backgroundColor: '#D97757',
+                      backgroundColor: 'var(--primary-color)',
                       borderRadius: '3px',
                       margin: '0 auto 1.5rem',
                       opacity: 0.3,
@@ -656,13 +664,13 @@ const App = () => {
                       style={{
                         fontSize: '1.5rem',
                         fontWeight: '600',
-                        color: '#222',
+                        color: theme === 'light' ? 'var(--text-light)' : 'var(--text-dark)',
                         marginBottom: '0.5rem',
                       }}
                     >
                       {selectedStudent.name}
                     </h2>
-                    <p style={{ color: '#717171', fontSize: '1rem' }}>
+                    <p style={{ color: theme === 'light' ? 'var(--card-roll-light)' : 'var(--card-roll-dark)', fontSize: '1rem' }}>
                       Roll No: {selectedStudent.rollNo}
                     </p>
                   </div>
@@ -677,9 +685,9 @@ const App = () => {
                     right: '16px',
                     padding: '8px',
                     borderRadius: '50%',
-                    backgroundColor: '#E3DACC',
+                    backgroundColor: theme === 'light' ? 'var(--bottom-sheet-btn-bg-light)' : 'var(--bottom-sheet-btn-bg-dark)',
                     border: 'none',
-                    color: '#555',
+                    color: theme === 'light' ? 'var(--bottom-sheet-btn-color-light)' : 'var(--bottom-sheet-btn-color-dark)',
                     cursor: 'pointer',
                     display: 'flex',
                     alignItems: 'center',
@@ -724,7 +732,7 @@ const App = () => {
                         height: '100px',
                         borderRadius: '50%',
                         overflow: 'hidden',
-                        border: '4px solid #D97757',
+                        border: '4px solid var(--primary-color)',
                         boxShadow: '0 4px 12px rgba(217, 119, 87, 0.2)'
                       }}>
                         <img
@@ -741,7 +749,7 @@ const App = () => {
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: 0.2 }}
                       style={{
-                        backgroundColor: '#E3DACC',
+                        backgroundColor: theme === 'light' ? 'var(--header-bg-light)' : 'var(--header-bg-dark)',
                         padding: '1.5rem',
                         borderRadius: '16px',
                         boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
@@ -750,7 +758,7 @@ const App = () => {
                       <h3
                         style={{
                           fontWeight: '600',
-                          color: '#222',
+                          color: theme === 'light' ? 'var(--text-light)' : 'var(--text-dark)',
                           marginBottom: '1rem',
                           display: 'flex',
                           alignItems: 'center',
@@ -758,13 +766,13 @@ const App = () => {
                           fontSize: '1.1rem'
                         }}
                       >
-                        <Mail size={20} style={{ color: '#D97757' }} />
+                        <Mail size={20} style={{ color: 'var(--primary-color)' }} />
                         Email
                       </h3>
                       <button
                         onClick={() => window.open(`mailto:${selectedStudent.email}`)}
                         style={{
-                          color: '#D97757',
+                          color: 'var(--primary-color)',
                           backgroundColor: 'transparent',
                           border: 'none',
                           cursor: 'pointer',
@@ -785,7 +793,7 @@ const App = () => {
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: 0.3 }}
                       style={{
-                        backgroundColor: '#E3DACC',
+                        backgroundColor: theme === 'light' ? 'var(--header-bg-light)' : 'var(--header-bg-dark)',
                         padding: '1.5rem',
                         borderRadius: '16px',
                         boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
@@ -794,7 +802,7 @@ const App = () => {
                       <h3
                         style={{
                           fontWeight: '600',
-                          color: '#222',
+                          color: theme === 'light' ? 'var(--text-light)' : 'var(--text-dark)',
                           marginBottom: '1rem',
                           display: 'flex',
                           alignItems: 'center',
@@ -802,13 +810,13 @@ const App = () => {
                           fontSize: '1.1rem'
                         }}
                       >
-                        <ExternalLink size={20} style={{ color: '#D97757' }} />
+                        <ExternalLink size={20} style={{ color: 'var(--primary-color)' }} />
                         Portfolio
                       </h3>
                       <button
                         onClick={() => handleLinkClick(selectedStudent.portfolioLink)}
                         style={{
-                          color: '#D97757',
+                          color: 'var(--primary-color)',
                           backgroundColor: 'transparent',
                           border: 'none',
                           cursor: 'pointer',
@@ -829,7 +837,7 @@ const App = () => {
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ delay: 0.4 }}
                       style={{
-                        backgroundColor: '#E3DACC',
+                        backgroundColor: theme === 'light' ? 'var(--header-bg-light)' : 'var(--header-bg-dark)',
                         padding: '1.5rem',
                         borderRadius: '16px',
                         boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
@@ -838,7 +846,7 @@ const App = () => {
                       <h3
                         style={{
                           fontWeight: '600',
-                          color: '#222',
+                          color: theme === 'light' ? 'var(--text-light)' : 'var(--text-dark)',
                           marginBottom: '1.5rem',
                           fontSize: '1.1rem'
                         }}
@@ -862,11 +870,11 @@ const App = () => {
                             alignItems: 'center',
                             justifyContent: 'center',
                             padding: '1rem',
-                            backgroundColor: '#F0EEE6',
+                            backgroundColor: theme === 'light' ? 'var(--social-btn-bg-light)' : 'var(--social-btn-bg-dark)',
                             borderRadius: '12px',
-                            border: '1px solid rgba(217, 119, 87, 0.2)',
+                            border: `1px solid ${theme === 'light' ? 'var(--social-btn-border-light)' : 'var(--social-btn-border-dark)'}`,
                             cursor: 'pointer',
-                            color: '#222',
+                            color: theme === 'light' ? 'var(--social-btn-color-light)' : 'var(--social-btn-color-dark)',
                             gap: '0.5rem',
                             transition: 'all 0.3s ease',
                             boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
@@ -887,11 +895,11 @@ const App = () => {
                             alignItems: 'center',
                             justifyContent: 'center',
                             padding: '1rem',
-                            backgroundColor: '#F0EEE6',
+                            backgroundColor: theme === 'light' ? 'var(--social-btn-bg-light)' : 'var(--social-btn-bg-dark)',
                             borderRadius: '12px',
-                            border: '1px solid rgba(217, 119, 87, 0.2)',
+                            border: `1px solid ${theme === 'light' ? 'var(--social-btn-border-light)' : 'var(--social-btn-border-dark)'}`,
                             cursor: 'pointer',
-                            color: '#222',
+                            color: theme === 'light' ? 'var(--social-btn-color-light)' : 'var(--social-btn-color-dark)',
                             gap: '0.5rem',
                             transition: 'all 0.3s ease',
                             boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
@@ -919,11 +927,11 @@ const App = () => {
                             alignItems: 'center',
                             justifyContent: 'center',
                             padding: '1rem',
-                            backgroundColor: '#F0EEE6',
+                            backgroundColor: theme === 'light' ? 'var(--social-btn-bg-light)' : 'var(--social-btn-bg-dark)',
                             borderRadius: '12px',
-                            border: '1px solid rgba(217, 119, 87, 0.2)',
+                            border: `1px solid ${theme === 'light' ? 'var(--social-btn-border-light)' : 'var(--social-btn-border-dark)'}`,
                             cursor: 'pointer',
-                            color: '#222',
+                            color: theme === 'light' ? 'var(--social-btn-color-light)' : 'var(--social-btn-color-dark)',
                             gap: '0.5rem',
                             transition: 'all 0.3s ease',
                             boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
@@ -944,11 +952,11 @@ const App = () => {
                             alignItems: 'center',
                             justifyContent: 'center',
                             padding: '1rem',
-                            backgroundColor: '#F0EEE6',
+                            backgroundColor: theme === 'light' ? 'var(--social-btn-bg-light)' : 'var(--social-btn-bg-dark)',
                             borderRadius: '12px',
-                            border: '1px solid rgba(217, 119, 87, 0.2)',
+                            border: `1px solid ${theme === 'light' ? 'var(--social-btn-border-light)' : 'var(--social-btn-border-dark)'}`,
                             cursor: 'pointer',
-                            color: '#222',
+                            color: theme === 'light' ? 'var(--social-btn-color-light)' : 'var(--social-btn-color-dark)',
                             gap: '0.5rem',
                             transition: 'all 0.3s ease',
                             boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
