@@ -388,17 +388,7 @@ const App = () => {
         instagram: 'https://instagram.com/divyansh',
         leetcode: 'https://leetcode.com/divyansh'
       },
-      { 
-        id:29,                                                                                             name:'Eeshu Bhardwaj',
-        rollNo: '029',
-        image: img29,
-        portfolioLink:'https://portfolio-github-io-omega-nine.vercel.app/',
-        email: 'bhardwaj.eeshu123@gmail.com',
-        github: 'https://github.com/Eeshubhardwaj',
-        linkedin: 'https://www.linkedin.com/in/eeshu-bhardwaj ',
-        instagram: 'https://www.instagram.com/eeshu.bhardwaj1902',
-        leetcode: 'https://leetcode.com/Eeshu'
-      },
+   
       {
         id: 29,
         name: 'Eeshu Bhardwaj',
