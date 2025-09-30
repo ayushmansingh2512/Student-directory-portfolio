@@ -22,6 +22,7 @@ import img25 from './assets/Studentimages/25.png';
 import img26 from './assets/Studentimages/26.png';
 import img27 from './assets/Studentimages/27.png';
 import img28 from './assets/Studentimages/28.png';
+import img29 from './assets/Studentimages/29.png';
 import img32 from './assets/Studentimages/32.png';
 import img33 from './assets/Studentimages/33.png';
 import img34 from './assets/Studentimages/34.png';
@@ -308,6 +309,17 @@ const App = () => {
         instagram: 'https://instagram.com/divyansh',
         leetcode: 'https://leetcode.com/divyansh'
       },
+      { 
+        id:29,                                                                                             name:'Eeshu Bhardwaj',
+        rollNo: '029',
+        image: img29,
+        portfolioLink:'https://portfolio-github-io-omega-nine.vercel.app/',
+        email: 'bhardwaj.eeshu123@gmail.com',
+        github: 'https://github.com/Eeshubhardwaj',
+        linkedin: 'https://www.linkedin.com/in/eeshu-bhardwaj ',
+        instagram: 'https://www.instagram.com/eeshu.bhardwaj1902',
+        leetcode: 'https://leetcode.com/Eeshu'
+      },
       {
         id: 32,
         name: 'Faisal Khan',
@@ -399,10 +411,10 @@ const App = () => {
         image: img43,
         portfolioLink: 'https://hemank-kumar.netlify.app/',
         email: 'hemank.fsu@gmail.com',
-        github: 'https://github.com/hemank',
-        linkedin: 'https://linkedin.com/in/hemank',
-        instagram: 'https://instagram.com/hemank',
-        leetcode: 'https://leetcode.com/hemank'
+        github: 'https://github.com/Hemank-Kumar',
+        linkedin: 'https://linkedin.com/in/hemank-kumar',
+        instagram: 'https://instagram.com/hemank_kumar_',
+        leetcode: 'https://leetcode.com/Hemank_Kumar_/'
       },
       {
         id: 44,
