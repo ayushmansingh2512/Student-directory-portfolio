@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, useDragControls } from 'framer-motion';
 import { X, Mail, ExternalLink, Github, Linkedin, Instagram, Code, Sun, Moon } from 'lucide-react';
+import Lottie from "lottie-react";
 import './App.css';
 import './new.css';
 import { useTheme } from './useTheme';
+import animationData from "./assets/Studentimages/Error_404.json";
 import img1 from './assets/Studentimages/1.png';
 import img3 from './assets/Studentimages/3.png';
 import img4 from './assets/Studentimages/4.png';
@@ -26,7 +28,6 @@ import img25 from './assets/Studentimages/25.png';
 import img26 from './assets/Studentimages/26.png';
 import img27 from './assets/Studentimages/27.png';
 import img28 from './assets/Studentimages/28.png';
- 
 import img32 from './assets/Studentimages/32.png';
 import img33 from './assets/Studentimages/33.png';
 import img34 from './assets/Studentimages/34.png';
@@ -43,14 +44,12 @@ import img52 from './assets/Studentimages/52.png';
 import img55 from './assets/Studentimages/55.png';
 import img56 from './assets/Studentimages/56.png';
 import img59 from './assets/Studentimages/59.png';
-import placeholder from './assets/Studentimages/placeholder.png';
-
 
 interface Student {
   id: number;
   name: string;
   rollNo: string;
-  image: string;
+  image: string | React.ReactNode;
   portfolioLink: string;
   email: string;
   github: string;
@@ -92,7 +91,7 @@ const App = () => {
         id: 2,
         name: 'Bhanu Sharan Yadav',
         rollNo: '002',
-        image: placeholder,
+        image: <Lottie animationData={animationData} />,
         portfolioLink: 'https://bhanusharanyadav.github.io/portfolio/',
         email: 'bhanusharanyadav@gmail.com',
         github: 'https://github.com/bhanusharanyadav',
@@ -185,9 +184,21 @@ const App = () => {
         leetcode: 'https://share.google/M4LBQqlmv0mwEu0q2'
       },
       {
+        id: 11,
+        name: 'Chirag Sharma',
+        rollNo: '011',
+        image: <Lottie animationData={animationData} />,
+        portfolioLink: 'https://chiragbhvp.github.io/Chirag-Portfolio/',
+        email: 'ragingchirag@gmail.com',
+        github: 'https://github.com/chiragbhvp',
+        linkedin: 'https://www.linkedin.com/in/chirag-sharma-9823a430b',
+        instagram: '',
+        leetcode: 'https://leetcode.com/u/chiragbhvp/'
+      },
+      {
         id: 12,
         name: 'Dazy Baliyan',
-        rollNo: '12',
+        rollNo: '012',
         image: img12,
         portfolioLink: 'https://dazy1918.github.io/dazy-portfolio/',
         email: 'baliyandazy22@gmail.com',
@@ -196,6 +207,18 @@ const App = () => {
         instagram: '',
         leetcode: 'https://leetcode.com/u/Dazy1918/'
         },
+      {
+        id: 13,
+        name: 'Deepak',
+        rollNo: '013',
+        image: <Lottie animationData={animationData} />,
+        portfolioLink: 'https://student-deepak.github.io/Portfolio/',
+        email: 'deepak97562@gmail.com',
+        github: 'https://github.com/Student-Deepak?tab=repositories',
+        linkedin: 'https://www.linkedin.com/in/deepak-saloniya-195271309/?originalSubdomain=in',
+        instagram: '',
+        leetcode: ''
+      },
       {
         id: 14,
         name: 'Deepak Sharma',
@@ -266,6 +289,18 @@ const App = () => {
         github: 'https://github.com/devdevdeep24-tech',
         linkedin: 'https://www.linkedin.com/in/devdeep-mishra-a41576275/',
         instagram: 'https://www.instagram.com/thedevdeepmishraa_/',
+        leetcode: ''
+      },
+      {
+        id: 21,
+        name: 'Devansh Bhardwaj',
+        rollNo: '021',
+        image: <Lottie animationData={animationData} />,
+        portfolioLink: '#',
+        email: 'dev2004bhardwaj@gmail.com',
+        github: 'https://github.com/Devansh1Bhardwaj',
+        linkedin: 'www.linkedin.com/in/devanshbhardwaj-43ab17258',
+        instagram: '',
         leetcode: ''
       },
       {
@@ -356,7 +391,7 @@ const App = () => {
         id: 29,
         name: 'Eeshu Bhardwaj',
         rollNo: '029',
-        image: placeholder,
+        image: <Lottie animationData={animationData} />,
         portfolioLink: 'https://portfolio-github-io-omega-nine.vercel.app/',
         email: 'bhardwaj.eeshu123@gmail.com',
         github: 'https://github.com/Eeshubhardwaj',
@@ -364,6 +399,18 @@ const App = () => {
         instagram: 'https://www.instagram.com/eeshu.bhardwaj1902',
         leetcode: ''
         },
+      {
+        id: 31,
+        name: 'Faisal Khan',
+        rollNo: '031',
+        image: <Lottie animationData={animationData} />,
+        portfolioLink: 'https://faisalkhan02.github.io/',
+        email: 'faisal.dataanalyst@gmail.com',
+        github: 'https://github.com/faisalkhan02',
+        linkedin: 'https://www.linkedin.com/in/faisal-khan-77690b249/',
+        instagram: '',
+        leetcode: ''
+      },
       {
         id: 32,
         name: 'Faisal Khan',
@@ -411,6 +458,30 @@ const App = () => {
         linkedin: 'https://linkedin.com/in/gauravg',
         instagram: 'https://instagram.com/gauravg',
         leetcode: 'https://leetcode.com/gauravg'
+      },
+      {
+        id: 36,
+        name: 'Gaurav Tyagi',
+        rollNo: '036',
+        image: <Lottie animationData={animationData} />,
+        portfolioLink: 'gauravtyagiportfolio.netlify.app',
+        email: 'gaurav.25161098@kiet.edu',
+        github: 'gauravtyagi.gethub.it',
+        linkedin: 'www.linkedin.com/in/gaurav-tyagi-991586387',
+        instagram: '',
+        leetcode: ''
+      },
+      {
+        id: 39,
+        name: 'Harsh Joshi',
+        rollNo: '039',
+        image: <Lottie animationData={animationData} />,
+        portfolioLink: 'https://harshjoshi104.github.io/index.html',
+        email: 'vasuharsh501@gmail.com',
+        github: 'https://github.com/Harshjoshi104',
+        linkedin: 'https://www.linkedin.com/in/harsh-joshi-7086252b4/',
+        instagram: '',
+        leetcode: ''
       },
       {
         id: 40,
@@ -487,7 +558,7 @@ const App = () => {
       {
         id: 48,
         name: 'Ishika Tyagi',
-        rollNo: '48',
+        rollNo: '048',
         image: img48,
         portfolioLink: 'https://tyagiishika609-bot.github.io/ISHIKATYAGI.PORTFOLIO/',
         email: 'tyagiishika609@gmail.com',
@@ -495,6 +566,18 @@ const App = () => {
         linkedin: 'https://www.linkedin.com/in/ishika-tyagi-558060386/',
         instagram: '',
         leetcode: 'https://leetcode.com/u/ISHIKATYAGI_13/'
+      },
+      {
+        id: 50,
+        name: 'Jagriti gupta',
+        rollNo: '050',
+        image: <Lottie animationData={animationData} />,
+        portfolioLink: 'https://jagriti125.github.io/portfolio.github.io/',
+        email: 'jagritigupta219@gmail.com',
+        github: 'https://github.com/Jagriti125',
+        linkedin: 'https://www.linkedin.com/in/jagriti-gupta-297566262/',
+        instagram: '',
+        leetcode: ''
       },
       {
         id: 51,
@@ -511,7 +594,7 @@ const App = () => {
       {
         id: 52,
         name: 'Kajal',
-        rollNo: '52',
+        rollNo: '052',
         image: img52,
         portfolioLink: 'https://kajalnagar.github.io/KAJAL-PORTFOLIOO/',
         email: 'nagarkajal420@gmail.com',
@@ -521,6 +604,18 @@ const App = () => {
         leetcode: 'https://leetcode.com/'
       },
       {
+        id: 57,
+        name: 'Kanhaiya Pal',
+        rollNo: '057',
+        image: <Lottie animationData={animationData} />,
+        portfolioLink: 'https://kanha642.github.io/MY-PORTFOLIO/',
+        email: 'kanhapal642@gmail.com',
+        github: 'https://github.com/KANHA642',
+        linkedin: 'www.linkedin.com/in/kanhaiya-pal-b8557b371',
+        instagram: '',
+        leetcode: ''
+      },
+        {
         id: 55,
         name: 'kali bakshi',
         rollNo: '055',
@@ -555,7 +650,44 @@ const App = () => {
         linkedin: 'https://www.linkedin.com/in/karmik-tyagi-506583276/ ',
         instagram: 'https://www.instagram.com/karmiktyagi/ ',
         leetcode: 'https://leetcode.com/u/karmiktyagi/ '
-      }
+      },
+      {
+        id: 60,
+        name: 'Kartik Madan',
+        rollNo: '060',
+        image: <Lottie animationData={animationData} />,
+        portfolioLink: 'https://calm-ocean.github.io/Portfolio/',
+        email: 'madankartik48@gmail.com',
+        github: 'https://github.com/Calm-Ocean',
+        linkedin: 'https://www.linkedin.com/in/kartik-madan-4a8235260',
+        instagram: 'https://www.instagram.com/kartikmadan.21?igsh=MTFjdDB4M3Njb3QzbQ==',
+        leetcode: 'https://leetcode.com/u/madankartik48/'
+      },
+      {
+        id: 61,
+        name: 'Kashika Maheshwari',
+        rollNo: '061',
+        image: <Lottie animationData={animationData} />,
+        portfolioLink: 'https://github.com/Itskashika/itskashika.github.io/blob/main/km.jpg',
+        email: 'maheshwarikashika212@gmail.com',
+        github: 'https://github.com/Itskashika',
+        linkedin: 'https://www.linkedin.com/in/kashika-maheshwari-6b7b05251',
+        instagram: '',
+        leetcode: 'https://leetcode.com/u/kashika212/'
+      },
+      {
+        id: 62,
+        name: 'kaushal kumar',
+        rollNo: '062',
+        image: <Lottie animationData={animationData} />,
+        portfolioLink: 'https://kaushal0402.github.io/portfolio',
+        email: 'nitinkushavah08@gmail.com',
+        github: 'https://github.com/kaushal0402',
+        linkedin: 'https://www.linkedin.com',
+        instagram: 'https://www.instagram.com',
+        leetcode: ''
+      },
+    
     ]
   };
 
@@ -615,11 +747,15 @@ const App = () => {
                 className="card"
               >
                 <div className="card-image">
-                  <motion.img
-                    src={student.image}
-                    alt={student.name}
-                    whileHover={{ scale: 1.05 }}
-                  />
+                  {typeof student.image === 'string' ? (
+                    <motion.img
+                      src={student.image}
+                      alt={student.name}
+                      whileHover={{ scale: 1.05 }}
+                    />
+                  ) : (
+                    <div className="lottie-container">{student.image}</div>
+                  )}
                 </div>
                 <div className="card-content">
                   <motion.h3
@@ -788,11 +924,15 @@ const App = () => {
                         border: '4px solid var(--primary-color)',
                         boxShadow: '0 4px 12px rgba(217, 119, 87, 0.2)'
                       }}>
-                        <img
-                          src={selectedStudent.image}
-                          alt={selectedStudent.name}
-                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                        />
+                        {typeof selectedStudent.image === 'string' ? (
+                          <img
+                            src={selectedStudent.image}
+                            alt={selectedStudent.name}
+                            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                          />
+                        ) : (
+                          <div className="lottie-container">{selectedStudent.image}</div>
+                        )}
                       </div>
                     </motion.div>
 
