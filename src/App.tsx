@@ -491,11 +491,11 @@ const App = () => {
         rollNo: '040',
         image: img40,
         portfolioLink: 'https://harshdev4.github.io/harsh/',
-        email: 'harsh@example.com',
-        github: 'https://github.com/harsh',
-        linkedin: 'https://linkedin.com/in/harsh',
-        instagram: 'https://instagram.com/harsh',
-        leetcode: 'https://leetcode.com/harsh'
+        email: 'harshtiwari6458@gmail.com',
+        github: 'https://github.com/harshdev4',
+        linkedin: 'https://www.linkedin.com/in/harsh-tiwari-220503267',
+        instagram: 'https://www.instagram.com/_harsh_tiwari_official/',
+        leetcode: 'https://leetcode.com/u/HarshTiwari56/'
       },
       {
         id: 41,
