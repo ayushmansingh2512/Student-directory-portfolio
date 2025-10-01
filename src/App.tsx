@@ -393,7 +393,7 @@ const App = () => {
         id: 29,
         name: 'Eeshu Bhardwaj',
         rollNo: '029',
-        image: <Lottie animationData={animationData} />,
+        image: img29,
         portfolioLink: 'https://portfolio-github-io-omega-nine.vercel.app/',
         email: 'bhardwaj.eeshu123@gmail.com',
         github: 'https://github.com/Eeshubhardwaj',
