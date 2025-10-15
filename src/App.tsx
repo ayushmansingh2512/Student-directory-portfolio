@@ -32,22 +32,30 @@ import img27 from './assets/Studentimages/27.png';
 import img28 from './assets/Studentimages/28.png';
 import img29 from './assets/Studentimages/29.png';
 import img30 from './assets/Studentimages/30.png';
+import img31 from './assets/Studentimages/31.png';
+
 import img32 from './assets/Studentimages/32.png';
 import img33 from './assets/Studentimages/33.png';
 import img34 from './assets/Studentimages/34.png';
 import img35 from './assets/Studentimages/35.png';
+import img36 from './assets/Studentimages/36.png';
+import img37 from './assets/Studentimages/37.png';
 import img40 from './assets/Studentimages/40.png';
 import img41 from './assets/Studentimages/41.png';
 import img42 from './assets/Studentimages/42.png';
 import img43 from './assets/Studentimages/43.png';
 import img44 from './assets/Studentimages/44.png';
+import img45 from './assets/Studentimages/45.png';
 import img46 from './assets/Studentimages/46.png';
 import img48 from './assets/Studentimages/48.png';
+import img50 from './assets/Studentimages/50.png';
 import img51 from './assets/Studentimages/51.png';
 import img52 from './assets/Studentimages/52.png';
 import img55 from './assets/Studentimages/55.png';
 import img56 from './assets/Studentimages/56.png';
 import img59 from './assets/Studentimages/59.png';
+import img63 from './assets/Studentimages/63.png';
+import placeholder from './assets/Studentimages/placeholder.png';
 
 interface Student {
   id: number;
@@ -102,7 +110,7 @@ const App = () => {
         linkedin: 'https://www.linkedin.com/feed/',
         instagram: '',
         leetcode: 'https://leetcode.com/u/bhanusharanyadav/'
-        },
+      },
       {
         id: 3,
         name: 'Bhargwi raj',
@@ -132,7 +140,7 @@ const App = () => {
         name: 'Bhavya',
         rollNo: '005',
         image: img5,
-        portfolioLink: ' https://github.com/Bhavya171104/portfolio',
+        portfolioLink: 'https://github.com/Bhavya171104/portfolio',
         email: 'aggarwalbhavya83@gmail.com',
         github: 'https://bhavya171104.github.io/portfolio/',
         linkedin: 'https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profil',
@@ -145,11 +153,11 @@ const App = () => {
         rollNo: '006',
         image: img6,
         portfolioLink: 'https://bhavyatyagi013-bit.github.io/portfolio/',
-        email: 'bhavyatyagi@example.com',
-        github: 'https://github.com/bhavyatyagi',
-        linkedin: 'https://linkedin.com/in/bhavyatyagi',
+        email: 'bhavyatyagi013@gmail.com',
+        github: 'https://github.com/bhavyatyagi013-bit/portfolio',
+        linkedin: 'https://www.linkedin.com/in/bhavya-tyagi-142672387?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
         instagram: 'https://instagram.com/bhavyatyagi',
-        leetcode: 'https://leetcode.com/bhavyatyagi'
+        leetcode: 'https://leetcode.com/explore/'
       },
       {
         id: 7,
@@ -210,12 +218,12 @@ const App = () => {
         linkedin: 'https://www.linkedin.com/i.n/dazy-baliyan-173758259',
         instagram: '',
         leetcode: 'https://leetcode.com/u/Dazy1918/'
-        },
+      },
       {
         id: 13,
         name: 'Deepak',
         rollNo: '013',
-        image: <Lottie animationData={animationData} />,
+        image: placeholder,
         portfolioLink: 'https://student-deepak.github.io/Portfolio/',
         email: 'deepak97562@gmail.com',
         github: 'https://github.com/Student-Deepak?tab=repositories',
@@ -228,12 +236,12 @@ const App = () => {
         name: 'Deepak Sharma',
         rollNo: '014',
         image: img14,
-        portfolioLink: 'https://deepaksharma-dadhich.github.io/portfolio/ ',
-        email: 'deepak@example.com',
-        github: 'https://github.com/deepak',
-        linkedin: 'https://linkedin.com/in/deepak',
-        instagram: 'https://instagram.com/deepak',
-        leetcode: 'https://leetcode.com/deepak'
+        portfolioLink: 'https://deepaksharma-dadhich.github.io/portfolio/',
+        email: 'itsdeepaksharma2003@gmail.com',
+        github: 'https://github.com/DeepakSharma-dadhich/1st-html-class/commit/385ca5afde5e03635588d3cf7e179bc95f052491',
+        linkedin: 'https://www.linkedin.com/in/deepak-sharma-56972536a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+        instagram: 'https://www.instagram.com/daksh_dadhich?igsh=MWJ4emZ0NWtkZGZzcw==',
+        leetcode: 'https://leetcode.com/u/DeepakDadhich/'
       },
       {
         id: 15,
@@ -246,6 +254,18 @@ const App = () => {
         linkedin: 'https://linkedin.com/in/deepaktyagi',
         instagram: 'https://instagram.com/deepaktyagi',
         leetcode: 'https://leetcode.com/deepaktyagi'
+      },
+      {
+        id: 16,
+        name: 'Deepali Gupta',
+        rollNo: '016',
+        image: <Lottie animationData={animationData} />,
+        portfolioLink: 'https://deepali25161078-collab.github.io/p2/',
+        email: '',
+        github: 'https://GitHub.com/deepali26161078-collab',
+        linkedin: '',
+        instagram: '',
+        leetcode: 'https://leetcode.com/u/deepalifT13vze9Tc/'
       },
       {
         id: 17,
@@ -278,8 +298,8 @@ const App = () => {
         image: img19,
         portfolioLink: 'https://deepikasharma-04.github.io/Project/',
         email: 'dee001sharma@gmai.com',
-        github: 'https://github.com/Deepikasharma-04',
-        linkedin: 'www.linkedin.com/in/deepikasharma1704',
+        github: '',
+        linkedin: '',
         instagram: '',
         leetcode: ''
       },
@@ -415,7 +435,7 @@ const App = () => {
         instagram: 'https://www.instagram.com/in/eshuydv_4891/',
         leetcode: 'https://www.leetcode.com/in/eshuydv3800/'
       },
- //     {
+      // {
       //   id: 31,
       //   name: 'Ekta Sharma',
       //   rollNo: '031',
@@ -430,8 +450,8 @@ const App = () => {
       {
         id: 31,
         name: 'Faisal Khan',
-        rollNo: '032',
-        image: <Lottie animationData={animationData} />,
+        rollNo: '031',
+        image: img31,
         portfolioLink: 'https://faisalkhan02.github.io/',
         email: 'faisal.dataanalyst@gmail.com',
         github: 'https://github.com/faisalkhan02',
@@ -442,7 +462,7 @@ const App = () => {
       {
         id: 32,
         name: 'Faisal Khan',
-        rollNo: '033',
+        rollNo: '032',
         image: img32,
         portfolioLink: 'https://faisalkhan-fk.github.io/portfolio/',
         email: 'faisalkhan7863030@gmail.com',
@@ -452,7 +472,7 @@ const App = () => {
         leetcode: 'https://leetcode.com/u/jR7OY6xwAb/'
       },
       {
-        id: 33,
+        id: 34,
         name: 'Gagan Bana',
         rollNo: '033',
         image: img33,
@@ -491,13 +511,37 @@ const App = () => {
         id: 36,
         name: 'Gaurav Tyagi',
         rollNo: '036',
-        image: <Lottie animationData={animationData} />,
+        image: img36,
         portfolioLink: 'gauravtyagiportfolio.netlify.app',
         email: 'gaurav.25161098@kiet.edu',
-        github: 'gauravtyagi.gethub.it',
+        github: 'link=https://gaurav36tyagi.github.io/html/',
         linkedin: 'www.linkedin.com/in/gaurav-tyagi-991586387',
         instagram: '',
         leetcode: ''
+      },
+      {
+id: 37,
+name: 'Govind Sharma',
+rollNo: '037',
+image: img37,
+portfolioLink: 'https://govind440.github.io/portfolio-2/',
+email: 'ptgovind47@gmail.com',
+github: 'https://github.com/Govind440',
+linkedin: 'https://www.linkedin.com/in/govind-sharma-252578287/',
+instagram: '',
+leetcode: 'https://leetcode.com/u/Govind2003/',
+},
+      {
+        id: 38,
+        name: 'Gunjan Sharma',
+        rollNo: '038',
+        image: placeholder,
+        portfolioLink: 'https://bhargavgunjan14-web.github.io/portfolio.gunjan/',
+        email: 'bhargavgunjan14@gmail.com',
+        github: 'https://github.com/bhargavgunjan14-web',
+        linkedin: 'https://www.linkedin.com/in/gunjan-bhargav-389167384?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app',
+        instagram: '',
+        leetcode: 'https://leetcode.com/u/bhargavgunjan/'
       },
       {
         id: 39,
@@ -531,13 +575,13 @@ const App = () => {
         portfolioLink: 'https://verma0104.github.io/P01/ ',
         email: 'vermaharsh438@gmail.com',
         github: 'https://github.com/Verma0104 ',
-        linkedin: 'https://www.linkedin.com/in/harsh-verma-22aa31383/ ',
-        instagram: '  ',
-        leetcode: 'https://leetcode.com/u/harshverma0104/ '
+        linkedin: 'https://www.linkedin.com/in/harsh-verma',
+        instagram: '',
+        leetcode: ''
       },
       {
         id: 42,
-        name: 'Harshit saini',
+        name: 'Harshit Saini',
         rollNo: '042',
         image: img42,
         portfolioLink: 'https://harshitsaini-2004.github.io/',
@@ -571,17 +615,30 @@ const App = () => {
         instagram: 'https://www.instagram.com/hemant_singh1.33/',
         leetcode: '#'
       },
+            {
+        id: 45,
+        name: 'Himanshu Srivastav',
+        rollNo: '045',
+        image: img45,
+        portfolioLink: 'https://himanshu-770.github.io/portfolio/',
+        email: 'HimanshuSrivastav@exaple.com',
+        github: 'https://github.com/himanshu',
+        linkedin: 'https://www.linkedin.com/in/isha-singh-1b4099325/',
+        instagram: '',
+        leetcode: 'https://leetcode.com/profile/'
+      },
+
       {
         id: 46,
-        name: 'Himanshu Srivastav',
+        name: 'Isha Singh',
         rollNo: '046',
         image: img46,
-        portfolioLink: 'https://himanshu-770.github.io/portfolio/',
-        email: 'himanshu@example.com',
-        github: 'https://github.com/himanshu',
-        linkedin: 'https://linkedin.com/in/himanshu',
-        instagram: 'https://instagram.com/himanshu',
-        leetcode: 'https://leetcode.com/himanshu'
+        portfolioLink: 'https://isha-prog.github.io/Portfolio/',
+        email: 'rekhas.singh2004@gmail.com',
+        github: 'https://github.com/Isha-prog/Portfolio',
+        linkedin: 'https://www.linkedin.com/in/isha-singh-1b4099325/',
+        instagram: '',
+        leetcode: 'https://leetcode.com/profile/'
       },
       {
         id: 48,
@@ -596,22 +653,22 @@ const App = () => {
         leetcode: 'https://leetcode.com/u/ISHIKATYAGI_13/'
       },
       {
-        id: 50,
+        id: 49,
         name: 'Jagriti gupta',
-        rollNo: '050',
+        rollNo: '049',
         image: <Lottie animationData={animationData} />,
         portfolioLink: 'https://jagriti125.github.io/portfolio.github.io/',
         email: 'jagritigupta219@gmail.com',
         github: 'https://github.com/Jagriti125',
         linkedin: 'https://www.linkedin.com/in/jagriti-gupta-297566262/',
         instagram: '',
-        leetcode: ''
+        leetcode: 'https://leetcode.com/u/Jagritigupta1/'
       },
       {
-        id: 51,
+        id: 50,
         name: 'Jatin Kumar',
-        rollNo: '051',
-        image: img51,
+        rollNo: '050',
+        image: img50,
         portfolioLink: 'https://techwithjatin.github.io/my_portfolio.io/ ',
         email: 'jatinkumar140703@gmail.com',
         github: 'https://github.com/techwithjatin ',
@@ -619,17 +676,29 @@ const App = () => {
         instagram: 'https://www.instagram.com/jatinkumar191/ ',
         leetcode: ''
       },
-      {
-        id: 52,
+        {
+        id: 51,
         name: 'Kajal',
-        rollNo: '052',
-        image: img52,
+        rollNo: '051',
+        image: img51,
         portfolioLink: 'https://kajalnagar.github.io/KAJAL-PORTFOLIOO/',
         email: 'nagarkajal420@gmail.com',
         github: 'https://github.com/Kajalnagar',
         linkedin: 'https://www.linkedin.com/in/kajal-nagar-520641385',
         instagram: '',
         leetcode: 'https://leetcode.com/'
+      },
+      {
+        id: 52,
+        name: 'Kajal Sharma',
+        rollNo: '052',
+        image: img52,
+        portfolioLink: 'https://kajusharma1908-wq.github.io/Portfolio.io/',
+        email: 'kajusharma1908@gmail.com',
+        github: 'https://github.com/',
+        linkedin: 'www.linkedin.com/in/kajal-sharma-183748326',
+        instagram: '',
+        leetcode: 'https://leetcode.com/u/Kajusharma1908/'
       },
       {
         id: 55,
@@ -726,7 +795,20 @@ const App = () => {
         linkedin: 'https://www.linkedin.com',
         instagram: 'https://www.instagram.com',
         leetcode: ''
-      }
+      },
+      {
+        id: 63,
+        name: 'Kavita',
+        rollNo: '063',
+        image: img63,
+        portfolioLink: 'https://kavita2203singh-oss.github.io/p2/',
+        email: 'kavita2203singh@gmail.com',
+        github: 'https://github.com/kavita2203singh-oss',
+        linkedin: '',
+        instagram: '',
+        leetcode: 'https://leetcode.com/u/Kavita_s/'
+      },
+ 
     ]
   };
 
