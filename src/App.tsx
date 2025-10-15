@@ -56,7 +56,7 @@ import img55 from './assets/Studentimages/55.png';
 import img56 from './assets/Studentimages/56.png';
 import img59 from './assets/Studentimages/59.png';
 import img63 from './assets/Studentimages/63.png';
-import placeholder from './assets/Studentimages/placeholder.png';
+ 
 
 interface Student {
   id: number;
