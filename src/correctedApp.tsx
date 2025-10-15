@@ -52,7 +52,6 @@ import img49 from './assets/Studentimages/49.png';
 import img50 from './assets/Studentimages/50.png';
 import img51 from './assets/Studentimages/51.png';
 import img52 from './assets/Studentimages/52.png';
-import img54 from './assets/Studentimages/54.png';
 import img55 from './assets/Studentimages/55.png';
 import img56 from './assets/Studentimages/56.png';
 import img59 from './assets/Studentimages/59.png';
@@ -142,12 +141,12 @@ const App = () => {
         name: 'Bhavya',
         rollNo: '005',
         image: img5,
-        portfolioLink: 'https://github.com/Bhavya171104/portfolio/blob/main/index.html',
+        portfolioLink: 'https://github.com/Bhavya171104/portfolio',
         email: 'aggarwalbhavya83@gmail.com',
         github: 'https://bhavya171104.github.io/portfolio/',
         linkedin: 'https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profil',
         instagram: 'https://leetcode.com',
-        leetcode: 'https://leetcode.com/u/BHAVYA171104/'
+        leetcode: 'https://leetcode.com/'
       },
       {
         id: 6,
@@ -700,18 +699,6 @@ const App = () => {
         linkedin: 'www.linkedin.com/in/kajal-sharma-183748326',
         instagram: '',
         leetcode: 'https://leetcode.com/u/Kajusharma1908/'
-      },
-      {
-        id: 54,
-        name: 'Kalash Diwaniya',
-        rollNo: '054',
-        image: img54,
-        portfolioLink: 'https://kalashdiwaniya.github.io/p2/',
-        email: 'kalashdiwaniya04@gmail.com',
-        github: 'https://github.com/Kalashdiwaniya',
-        linkedin: 'https://github.com/Kalashdiwaniya',
-        instagram: '',
-        leetcode: 'https://leetcode.com/profile/'
       },
       {
         id: 55,
