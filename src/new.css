@@ -1,7 +1,7 @@
 /* src/new.css */
 :root {
   --background-light: #F0EEE6;
-  --text-light: #222;
+  --text-light: #3D3D3A  ;
   --header-bg-light: #E3DACC;
   --card-bg-light: #FFF;
   --card-name-light: #222;
@@ -18,8 +18,8 @@
 }
 
 [data-theme='dark'] {
-  --background-dark: #121212;
-  --text-dark: #FFF;
+  --background-dark: #262624;
+  --text-dark: #C2C0B6;
   --header-bg-dark: #1E1E1E;
   --card-bg-dark: #2C2C2C;
   --card-name-dark: #FFF;
