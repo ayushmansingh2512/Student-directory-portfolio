@@ -48,6 +48,7 @@ import img44 from './assets/Studentimages/44.png';
 import img45 from './assets/Studentimages/45.png';
 import img46 from './assets/Studentimages/46.png';
 import img48 from './assets/Studentimages/48.png';
+import img49 from './assets/Studentimages/49.png';
 import img50 from './assets/Studentimages/50.png';
 import img51 from './assets/Studentimages/51.png';
 import img52 from './assets/Studentimages/52.png';
@@ -223,7 +224,7 @@ const App = () => {
         id: 13,
         name: 'Deepak',
         rollNo: '013',
-        image: placeholder,
+        image:  <Lottie animationData={animationData} />,
         portfolioLink: 'https://student-deepak.github.io/Portfolio/',
         email: 'deepak97562@gmail.com',
         github: 'https://github.com/Student-Deepak?tab=repositories',
@@ -535,7 +536,7 @@ leetcode: 'https://leetcode.com/u/Govind2003/',
         id: 38,
         name: 'Gunjan Sharma',
         rollNo: '038',
-        image: placeholder,
+        image:  <Lottie animationData={animationData} />,
         portfolioLink: 'https://bhargavgunjan14-web.github.io/portfolio.gunjan/',
         email: 'bhargavgunjan14@gmail.com',
         github: 'https://github.com/bhargavgunjan14-web',
@@ -641,9 +642,9 @@ leetcode: 'https://leetcode.com/u/Govind2003/',
         leetcode: 'https://leetcode.com/profile/'
       },
       {
-        id: 48,
+        id: 47,
         name: 'Ishika Tyagi',
-        rollNo: '048',
+        rollNo: '047',
         image: img48,
         portfolioLink: 'https://tyagiishika609-bot.github.io/ISHIKATYAGI.PORTFOLIO/',
         email: 'tyagiishika609@gmail.com',
@@ -651,6 +652,18 @@ leetcode: 'https://leetcode.com/u/Govind2003/',
         linkedin: 'https://www.linkedin.com/in/ishika-tyagi-558060386/',
         instagram: '',
         leetcode: 'https://leetcode.com/u/ISHIKATYAGI_13/'
+      },
+      {
+        id: 48,
+        name: 'Ishita prajapati',
+        rollNo: '49',
+        image: img49,
+        portfolioLink: 'https://github.com/ishita1234460/Portfolio.io',
+        email: 'ishitaprajapati2004@gmail.com',
+        github: 'https://github.com/ishita1234460',
+        linkedin: '',
+        instagram: '',
+        leetcode: 'https://leetcode.com/u/01ishita/'
       },
       {
         id: 49,
