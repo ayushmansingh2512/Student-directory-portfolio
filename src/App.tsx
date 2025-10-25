@@ -12,6 +12,7 @@ import img4 from './assets/Studentimages/4.png';
 import img5 from './assets/Studentimages/5.png';
 import img6 from './assets/Studentimages/6.png';
 import img7 from './assets/Studentimages/7.png';
+import img8 from './assets/Studentimages/8.png';
 import img9 from './assets/Studentimages/9.png';
 import img10 from './assets/Studentimages/10.png';
 import img12 from './assets/Studentimages/12.png';
@@ -56,6 +57,7 @@ import img54 from './assets/Studentimages/54.png';
 import img55 from './assets/Studentimages/55.png';
 import img56 from './assets/Studentimages/56.png';
 import img59 from './assets/Studentimages/59.png';
+import img61 from './assets/Studentimages/61.png';
 import img63 from './assets/Studentimages/63.png';
  
 
@@ -142,9 +144,9 @@ const App = () => {
         name: 'Bhavya',
         rollNo: '005',
         image: img5,
-        portfolioLink: 'https://github.com/Bhavya171104/portfolio/blob/main/index.html',
+        portfolioLink: 'https://bhavya171104.github.io/portfolio/',
         email: 'aggarwalbhavya83@gmail.com',
-        github: 'https://bhavya171104.github.io/portfolio/',
+        github: 'https://bhavya171104.github.io/',
         linkedin: 'https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profil',
         instagram: 'https://leetcode.com',
         leetcode: 'https://leetcode.com/u/BHAVYA171104/'
@@ -172,6 +174,18 @@ const App = () => {
         linkedin: 'https://www.linkedin.com/in/bhawna-pathak-577098236/',
         instagram: '',
         leetcode: 'https://leetcode.com/u/BhawanaPathak/'
+      },
+            {
+        id: 8,
+        name: 'Bhawna Gautam',
+        rollNo: '008',
+        image: img8,
+        portfolioLink: 'https://bhawnagautam2629.github.io/Portfolio.io/',
+        email: 'bhawnagautam053@gmail.com',
+        github: 'https://github.com/Bhawnagautam2629',
+        linkedin: 'https://www.linkedin.com/in/bhawna-gautam-b59475384/',
+        instagram: 'https://instagram.com/',
+        leetcode: 'https://leetcode.com/'
       },
       {
         id: 9,
@@ -611,11 +625,11 @@ const App = () => {
         rollNo: '045',
         image: img45,
         portfolioLink: 'https://himanshu-770.github.io/portfolio/',
-        email: 'HimanshuSrivastav@exaple.com',
-        github: 'https://github.com/himanshu',
-        linkedin: 'https://www.linkedin.com/in/isha-singh-1b4099325/',
-        instagram: '',
-        leetcode: 'https://leetcode.com/profile/'
+        email: 'himanshusrivastava211006@gmail.com',
+        github: 'https://github.com/Himanshu-770',
+        linkedin: 'https://www.linkedin.com/in/himanshusrivastava770/',
+        instagram: 'https://www.instagram.com/_itshimanshu_sri/',
+        leetcode: 'https://leetcode.com/u/Himanshu770/'
       },
       {
         id: 46,
@@ -789,7 +803,7 @@ const App = () => {
         id: 61,
         name: 'Kashika Maheshwari',
         rollNo: '061',
-        image: <Lottie animationData={animationData} />,
+        image: img61,
         portfolioLink: 'https://github.com/Itskashika/itskashika.github.io/blob/main/km.jpg',
         email: 'maheshwarikashika212@gmail.com',
         github: 'https://github.com/Itskashika',
